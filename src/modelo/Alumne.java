@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
@@ -14,5 +15,16 @@ import javax.persistence.Entity;
  */
 @Entity
 public class Alumne implements Serializable{
+
+    @Id
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     
 }
