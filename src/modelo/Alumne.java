@@ -5,10 +5,14 @@
  */
 package modelo;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
+
 /**
  *
  * @author ALUMNEDAM
  */
-public class Alumne {
+@Entity
+public class Alumne implements Serializable{
     
 }
