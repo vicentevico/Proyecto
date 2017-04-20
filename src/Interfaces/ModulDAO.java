@@ -13,20 +13,11 @@ import modelo.Modul;
  */
 public interface ModulDAO extends GenericaDAO<Modul>{
 
-    @Override
-    public default void afegir(Modul t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void eliminar(Modul t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void modificar(Modul t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    
+    /**
+     * Metodo que pasando el nombre de un modulo, devuelve un objeto
+     * Modulo
+     * @param nombre nombre del modulo a buscar
+     * @return objeto Modulo
+     */
+    Modul buscarPerNom(String nombre);
 }

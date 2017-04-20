@@ -13,19 +13,11 @@ import modelo.Curs;
  */
 public interface CursDAO extends GenericaDAO<Curs>{
 
-    @Override
-    public default void afegir(Curs t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void eliminar(Curs t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void modificar(Curs t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    /**
+     * Metodo que pasandole el nombre de un curso lo busca y te devuelve un 
+     * objeto curso
+     * @param nombreCurso nombre del curso a buscar
+     * @return objeto curso
+     */
+    Curs buscarPerNom(String nombreCurso);
 }

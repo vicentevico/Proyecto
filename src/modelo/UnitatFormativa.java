@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,6 +25,8 @@ public class UnitatFormativa implements Serializable{
     //Atributos
     @Id
     private Long id;
+    @ManyToOne
+    @JoinColumn(name="nombreUnidad")
     private String nombre;
     private int horas;
     

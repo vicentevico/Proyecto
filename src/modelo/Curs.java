@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import utilidades.EnumCurso;
 
@@ -18,21 +21,27 @@ import utilidades.EnumCurso;
  * @author Vicente
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Curs.CONSULTA, query="SELECT c FROM Curs c WHERE c.nombreCurso=:nombreCurso")})
 @Table(name="AV_CURSOS")
 public class Curs implements Serializable{
     private static final long serialVersionUID = 1L;
     
+    //Nombre query
+    public static final String CONSULTA = "nombreCurso";
+    
     //Atributos
     @Id
     private Long id;
-    private EnumCurso enumCurso;
+    private EnumCurso nombreCurso;
+    @OneToMany(mappedBy="nombre")
     private ArrayList<UnitatFormativa> listaUnidadesFormativas;
 
     
     //Constructores
     public Curs(Long id, EnumCurso enumCurso, ArrayList<UnitatFormativa> listaUnidadesFormativas){
         this.id = id;
-        this.enumCurso = enumCurso;
+        this.nombreCurso = enumCurso;
         this.listaUnidadesFormativas = listaUnidadesFormativas;
     }
     
@@ -49,12 +58,12 @@ public class Curs implements Serializable{
         this.id = id;
     }
 
-    public EnumCurso getEnumCurso() {
-        return enumCurso;
+    public EnumCurso getNombreCurso() {
+        return nombreCurso;
     }
 
-    public void setEnumCurso(EnumCurso enumCurso) {
-        this.enumCurso = enumCurso;
+    public void setNombreCurso(EnumCurso nombreCurso) {
+        this.nombreCurso = nombreCurso;
     }
 
     public ArrayList<UnitatFormativa> getListaUnidadesFormativas() {

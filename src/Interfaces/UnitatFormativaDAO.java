@@ -13,19 +13,12 @@ import modelo.UnitatFormativa;
  */
 public interface UnitatFormativaDAO extends GenericaDAO<UnitatFormativa>{
 
-    @Override
-    public default void afegir(UnitatFormativa t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void eliminar(UnitatFormativa t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void modificar(UnitatFormativa t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    /**
+     * Metodo que pasando el nombre de una unidad formativa nos devuelve
+     * un objeto UnitatFormativa
+     * @param nombre nombre de la unidad formativa
+     * @return objeto UnitatFormativa
+     */
+    UnitatFormativa buscarPerNom(String nombre);
     
 }
