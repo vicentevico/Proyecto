@@ -27,17 +27,32 @@ public class Launcher extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        tp_General = new javax.swing.JTabbedPane();
+        tp_Alumne = new javax.swing.JTabbedPane();
+        tp_Cicle = new javax.swing.JTabbedPane();
+        tp_Familia = new javax.swing.JTabbedPane();
+        tp_Modul = new javax.swing.JTabbedPane();
+        tp_UF = new javax.swing.JTabbedPane();
+        tp_Matricula = new javax.swing.JTabbedPane();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tp_General.addTab("Alumne", tp_Alumne);
+        tp_General.addTab("Cicle", tp_Cicle);
+        tp_General.addTab("Familia", tp_Familia);
+        tp_General.addTab("Modul", tp_Modul);
+        tp_General.addTab("Unitat  Formativa", tp_UF);
+        tp_General.addTab("Matricula", tp_Matricula);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(tp_General, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(tp_General, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
 
         pack();
@@ -79,5 +94,12 @@ public class Launcher extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane tp_Alumne;
+    private javax.swing.JTabbedPane tp_Cicle;
+    private javax.swing.JTabbedPane tp_Familia;
+    private javax.swing.JTabbedPane tp_General;
+    private javax.swing.JTabbedPane tp_Matricula;
+    private javax.swing.JTabbedPane tp_Modul;
+    private javax.swing.JTabbedPane tp_UF;
     // End of variables declaration//GEN-END:variables
 }
