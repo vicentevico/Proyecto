@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -16,9 +18,15 @@ import javax.persistence.Table;
  * @author ALUMNEDAM
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Alumne.CONSULTA_NOM, query="SELECT a FROM Alumne a WHERE a.nom=:nom"),
+@NamedQuery(name= Alumne.CONSULTA_COGNOM, query="SELECT a FROM Alumne a WHERE a.cognom=:cognom")})
 @Table(name = "AV_ALUMNES")
 public class Alumne implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    public static final String CONSULTA_NOM = "buscar_nom";
+    public static final String CONSULTA_COGNOM = "buscar_cognom";
 
     //Atributos
     @Id
@@ -26,7 +34,7 @@ public class Alumne implements Serializable {
     private String nom;
     private String cognom;
     private String correu;
-    private int telefon;
+    private long telefon;
 
     //Constructores
     public Alumne(String nif, String nom, String cognom, String correu, int telefon) {
@@ -41,14 +49,6 @@ public class Alumne implements Serializable {
     }
 
     //Getters & Setters
-    public String getId() {
-        return nif;
-    }
-
-    public void setId(String nif) {
-        this.nif = nif;
-    }
-
     public String getNif() {
         return nif;
     }
@@ -65,18 +65,38 @@ public class Alumne implements Serializable {
         return correu;
     }
 
-    public int getTelefon() {
+    public long getTelefon() {
         return telefon;
+    }
+
+    public void setNif(String nif) {
+        this.nif = nif;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setCognom(String cognom) {
+        this.cognom = cognom;
+    }
+
+    public void setCorreu(String correu) {
+        this.correu = correu;
+    }
+
+    public void setTelefon(long telefon) {
+        this.telefon = telefon;
     }
 
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 11 * hash + Objects.hashCode(this.nif);
-        hash = 11 * hash + Objects.hashCode(this.nom);
-        hash = 11 * hash + Objects.hashCode(this.cognom);
-        hash = 11 * hash + Objects.hashCode(this.correu);
-        hash = 11 * hash + this.telefon;
+        hash = 37 * hash + Objects.hashCode(this.nif);
+        hash = 37 * hash + Objects.hashCode(this.nom);
+        hash = 37 * hash + Objects.hashCode(this.cognom);
+        hash = 37 * hash + Objects.hashCode(this.correu);
+        hash = 37 * hash + (int) (this.telefon ^ (this.telefon >>> 32));
         return hash;
     }
 
