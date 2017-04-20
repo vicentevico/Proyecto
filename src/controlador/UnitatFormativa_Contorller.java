@@ -67,7 +67,9 @@ public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
 
     @Override
     public void modificar(UnitatFormativa t) {
+        System.out.println("a");
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
     
 }
