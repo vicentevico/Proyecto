@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaces;
-
-import modelo.Alumne;
+package controlador;
 
 /**
  *
- * @author Vicente
+ * @author ALUMNEDAM
  */
-public interface AlumneDAO extends GenericaDAO<Alumne>{
-    
-    Alumne buscarPerNom(String nom);
+public class Cicle_Controller{
     
 }

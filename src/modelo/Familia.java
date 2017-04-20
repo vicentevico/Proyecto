@@ -7,16 +7,17 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author ALUMNEDAM
  */
 @Entity
+@Table(name = "AV_FAMILIES")
 public class Familia implements Serializable {
     private static final long serialVersionUID = 1L;
 
