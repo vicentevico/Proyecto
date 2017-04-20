@@ -6,8 +6,7 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,11 +26,11 @@ public class Cicle implements Serializable {
     private Long id;
     private String nom;
     private String grau;
-    private ArrayList<Modul> moduls;
-    private ArrayList<Curs> cursos;
+    private List<Modul> moduls;
+    private List<Curs> cursos;
 
     //Constuctores
-    public Cicle(Long id, String nom, String grau, ArrayList<Modul> moduls, ArrayList<Curs> cursos) {
+    public Cicle(Long id, String nom, String grau, List<Modul> moduls, List<Curs> cursos) {
         this.id = id;
         this.nom = nom;
         this.grau = grau;
@@ -67,19 +66,19 @@ public class Cicle implements Serializable {
         this.grau = grau;
     }
 
-    public ArrayList<Modul> getModuls() {
+    public List<Modul> getModuls() {
         return moduls;
     }
 
-    public void setModuls(ArrayList<Modul> moduls) {
+    public void setModuls(List<Modul> moduls) {
         this.moduls = moduls;
     }
 
-    public ArrayList<Curs> getCursos() {
+    public List<Curs> getCursos() {
         return cursos;
     }
 
-    public void setCursos(ArrayList<Curs> cursos) {
+    public void setCursos(List<Curs> cursos) {
         this.cursos = cursos;
     }
 
@@ -128,6 +127,6 @@ public class Cicle implements Serializable {
 
     @Override
     public String toString() {
-        return "Cicle{" + "id=" + id + ", nom=" + nom + ", grau=" + grau + ", moduls=" + moduls + ", cursos=" + cursos + '}';
+        return "Cicle{" + "id=" + id + ", nom=" + nom + ", grau=" + grau + ", moduls=" + "modulos" + ", cursos=" + "cursos" + '}';
     }    
 }

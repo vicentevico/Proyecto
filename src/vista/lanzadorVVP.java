@@ -7,6 +7,8 @@ package vista;
 
 import controlador.Curs_Controller;
 import modelo.Curs;
+import modelo.UnitatFormativa;
+import utilidades.EnumCurso;
 
 /**
  *
@@ -21,7 +23,14 @@ public class lanzadorVVP {
         Curs_Controller cc = new Curs_Controller();
         
         Curs curso = new Curs();
-//        cc.afegir();
+        curso.setId(Long.MIN_VALUE);
+        curso.setNombreCurso(EnumCurso.PRIMERO);
+        UnitatFormativa uf = new UnitatFormativa();
+        uf.setId(Long.MIN_VALUE);
+        
+        curso.getListaUnidadesFormativas().add(uf);
+        
+        cc.afegir(curso);
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.util.List;
 import modelo.Alumne;
 
 /**
@@ -13,6 +14,26 @@ import modelo.Alumne;
  */
 public interface AlumneDAO extends GenericaDAO<Alumne>{
     
+    /**
+     * Retorna un objecte Alumne si el seu nom es igual al String
+     * passat per parametre 
+     * @param nom
+     * @return 
+     */
     Alumne buscarPerNom(String nom);
+    
+    /**
+     * Retorna un objecte Alumne si el seu cognom es igual al String
+     * passat per parametre 
+     * @param cognom
+     * @return 
+     */
+    Alumne buscarPerCognom(String cognom);
+    
+    /**
+     * Retorna tots els alumnes a la bd
+     * @return 
+     */
+    List<Alumne> buscarTots();
     
 }

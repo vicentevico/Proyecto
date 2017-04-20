@@ -8,6 +8,7 @@ package controlador;
 import Interfaces.UnitatFormativaDAO;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Query;
 import modelo.UnitatFormativa;
 
 /**
@@ -15,11 +16,6 @@ import modelo.UnitatFormativa;
  * @author Vicente
  */
 public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
-
-    @Override
-    public UnitatFormativa buscarPerNom(String nombre) {
-        return null;
-    }
 
     @Override
     public void afegir(UnitatFormativa t) {
@@ -67,7 +63,40 @@ public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
 
     @Override
     public void modificar(UnitatFormativa t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // Recupera el entity manager
+        EM_Controller oem = new EM_Controller();
+        EntityManager em = oem.getEntityManager();
+
+        // El persistim a la base de dades
+        EntityTransaction etx = em.getTransaction();
+
+        System.out.println("begin");
+        etx.begin();
+
+        System.out.println("merge");
+        em.merge(t);
+
+        System.out.println("commit");
+        etx.commit();
+
+        System.out.println("close");
+        em.close();
+    }
+
+    @Override
+    public UnitatFormativa buscarPerId(Long idCurs) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(UnitatFormativa.CONSULTA,UnitatFormativa.class);
+        query.setParameter("idCurs", idCurs);
+        UnitatFormativa uf = (UnitatFormativa) query.getSingleResult();
+
+        System.out.println("close");
+        em.close();
+
+        return uf;
     }
     
 }

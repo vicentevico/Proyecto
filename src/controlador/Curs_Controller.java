@@ -18,22 +18,6 @@ import modelo.Curs;
 public class Curs_Controller implements CursDAO{
 
     @Override
-    public Curs buscarPerNom(String nombreCurso) {
-        // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
-
-        System.out.println("busqueda");
-        Query query = em.createNamedQuery(Curs.CONSULTA,Curs.class);
-        query.setParameter("nombreCurso", nombreCurso);
-        Curs p = (Curs) query.getSingleResult();
-
-        System.out.println("close");
-        em.close();
-
-        return p;
-    }
-
-    @Override
     public void afegir(Curs t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
@@ -99,5 +83,19 @@ public class Curs_Controller implements CursDAO{
         em.close();
     }
     
-    
+    @Override
+    public Curs buscarPerNom(String nombreCurso) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(Curs.CONSULTA,Curs.class);
+        query.setParameter("nombreCurso", nombreCurso);
+        Curs c = (Curs) query.getSingleResult();
+
+        System.out.println("close");
+        em.close();
+
+        return c;
+    }
 }

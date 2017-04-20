@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -18,23 +20,34 @@ import javax.persistence.Table;
  * @author Vicente
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Curs.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.idCurs=:idCurs")})
 @Table(name="AV_UNITATS_FORMATIVES")
 public class UnitatFormativa implements Serializable{
     private static final long serialVersionUID = 1L;
     
+    //Nombre query
+    public static final String CONSULTA = "idCurso";
     //Atributos
     @Id
     private Long id;
-    @ManyToOne
-    @JoinColumn(name="nombreUnidad")
-    private String nombre;
+    private String nomUnitatFormativa;
     private int horas;
     
+    @ManyToOne
+    @JoinColumn(name="idCurs")
+    private Curs idCurs;
+    @ManyToOne
+    @JoinColumn(name="idModul")
+    private Modul idModul;
+    
     //Constructores
-    public UnitatFormativa(Long id, String nombre, int horas){
+    public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul){
         this.id = id;
-        this.nombre = nombre;
+        this.nomUnitatFormativa = nombreUnitatFormativa;
         this.horas = horas;
+        this.idCurs = idCurs;
+        this.idModul = idModul;
     }
     
     public UnitatFormativa(){
@@ -50,12 +63,12 @@ public class UnitatFormativa implements Serializable{
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getNomUnitatFormativa() {
+        return nomUnitatFormativa;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNomUnitatFormativa(String nomUnitatFormativa) {
+        this.nomUnitatFormativa = nomUnitatFormativa;
     }
 
     public int getHoras() {
@@ -64,6 +77,22 @@ public class UnitatFormativa implements Serializable{
 
     public void setHoras(int horas) {
         this.horas = horas;
+    }
+    
+    public Modul getIdModul() {
+        return idModul;
+    }
+
+    public void setIdModul(Modul idModul) {
+        this.idModul = idModul;
+    }
+
+    public Curs getIdCurs() {
+        return idCurs;
+    }
+
+    public void setIdCurs(Curs idCurs) {
+        this.idCurs = idCurs;
     }
 
     @Override

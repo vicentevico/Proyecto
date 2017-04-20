@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.util.List;
 import modelo.Familia;
 
 /**
@@ -13,19 +14,11 @@ import modelo.Familia;
  */
 public interface FamiliaDAO extends GenericaDAO<Familia>{
 
-    @Override
-    public default void afegir(Familia t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void eliminar(Familia t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void modificar(Familia t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    /**
+     * Retorna una llista de les families que tenen el mateix cicle
+     * @param nomCicle
+     * @return 
+     */
+    List<Familia> buscarFamiliaPerNomCicle(String nomCicle);
     
 }

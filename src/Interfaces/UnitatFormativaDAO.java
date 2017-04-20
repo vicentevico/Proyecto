@@ -19,6 +19,6 @@ public interface UnitatFormativaDAO extends GenericaDAO<UnitatFormativa>{
      * @param nombre nombre de la unidad formativa
      * @return objeto UnitatFormativa
      */
-    UnitatFormativa buscarPerNom(String nombre);
+    UnitatFormativa buscarPerId(Long idCurs);
     
 }

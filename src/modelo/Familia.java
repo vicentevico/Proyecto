@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -25,10 +26,10 @@ public class Familia implements Serializable {
     @Id
     private Long id;
     private String nom;
-    private ArrayList<Cicle> cicles;
+    private List<Cicle> cicles;
 
     //Constructores
-    public Familia(Long id, String nom, ArrayList<Cicle> cicles) {
+    public Familia(Long id, String nom, List<Cicle> cicles) {
         this.id = id;
         this.nom = nom;
         this.cicles = cicles;
@@ -54,11 +55,11 @@ public class Familia implements Serializable {
         this.nom = nom;
     }
 
-    public ArrayList<Cicle> getCicles() {
+    public List<Cicle> getCicles() {
         return cicles;
     }
 
-    public void setCicles(ArrayList<Cicle> cicles) {
+    public void setCicles(List<Cicle> cicles) {
         this.cicles = cicles;
     }
 
@@ -97,6 +98,6 @@ public class Familia implements Serializable {
     
     @Override
     public String toString() {
-        return "Familia{" + "id=" + id + ", nom=" + nom + ", cicles=" + "nada" + '}';
+        return "Familia{" + "id=" + id + ", nom=" + nom + ", cicles=" + "ciclos" + '}';
     }
 }

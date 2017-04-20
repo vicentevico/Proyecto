@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import java.util.List;
 import modelo.Cicle;
 
 /**
@@ -13,19 +14,10 @@ import modelo.Cicle;
  */
 public interface CicleDAO extends GenericaDAO<Cicle> {
 
-    @Override
-    public default void afegir(Cicle t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void eliminar(Cicle t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public default void modificar(Cicle t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    /**
+     * Retorna tots els cicles que contenten un modul especific
+     * @param nomModul
+     * @return 
+     */
+    List<Cicle> buscarCiclesPerNomModul(String nomModul);    
 }

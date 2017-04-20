@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -34,8 +35,8 @@ public class Curs implements Serializable{
     @Id
     private Long id;
     private EnumCurso nombreCurso;
-    @OneToMany(mappedBy="nombre")
-    private ArrayList<UnitatFormativa> listaUnidadesFormativas;
+    @OneToMany(mappedBy="idCurs")
+    private List<UnitatFormativa> listaUnidadesFormativas;
 
     
     //Constructores
@@ -46,7 +47,7 @@ public class Curs implements Serializable{
     }
     
     public Curs(){
-        
+        listaUnidadesFormativas = new ArrayList();
     }
     
     //Getters & Setters
@@ -66,11 +67,11 @@ public class Curs implements Serializable{
         this.nombreCurso = nombreCurso;
     }
 
-    public ArrayList<UnitatFormativa> getListaUnidadesFormativas() {
+    public List<UnitatFormativa> getListaUnidadesFormativas() {
         return listaUnidadesFormativas;
     }
 
-    public void setListaUnidadesFormativas(ArrayList<UnitatFormativa> listaUnidadesFormativas) {
+    public void setListaUnidadesFormativas(List<UnitatFormativa> listaUnidadesFormativas) {
         this.listaUnidadesFormativas = listaUnidadesFormativas;
     }
 

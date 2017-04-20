@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,14 +20,20 @@ import javax.persistence.Table;
  * @author Vicente
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Curs.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.idCurs=:idCurs")})
 @Table(name="AV_MODULS")
 public class Modul implements Serializable{
     private static final long serialVersionUID = 1L;
+    
+    //Nombre query
+    public static final String CONSULTA = "idCurso";
     
     //Atributos
     @Id
     private Long id;
     private String nombre;
+    @OneToMany(mappedBy="idModul")
     private ArrayList<UnitatFormativa> listaUnidadesFormativas;
     
     //Constructores
