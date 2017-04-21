@@ -84,13 +84,13 @@ public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
     }
 
     @Override
-    public UnitatFormativa buscarPerId(Long idCurs) {
+    public UnitatFormativa buscarPerNom(String nomUnitatFormativa) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(UnitatFormativa.CONSULTA,UnitatFormativa.class);
-        query.setParameter("idCurs", idCurs);
+        query.setParameter("nomUnitatFormativa", nomUnitatFormativa);
         UnitatFormativa uf = (UnitatFormativa) query.getSingleResult();
 
         System.out.println("close");
