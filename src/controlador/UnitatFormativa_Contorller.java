@@ -23,7 +23,7 @@ public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
         EM_Controller oem = new EM_Controller();
         EntityManager em = oem.getEntityManager();
 
-        // El persistim a la base de dades
+        // El persistim a la base de dades.
         EntityTransaction etx = em.getTransaction();
 
         System.out.println("begin");
