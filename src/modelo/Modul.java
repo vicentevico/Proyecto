@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -36,12 +38,15 @@ public class Modul implements Serializable{
     private String nombre;
     @OneToMany(mappedBy="idModul")
     private List<UnitatFormativa> listaUnidadesFormativas;
+    @ManyToOne
+    @JoinColumn(name="cicleModul")
+    private Cicle cicleModul;
     
     //Constructores
-    public Modul(Long id, String nombre, List<UnitatFormativa> listaUnidadesFormativas){
+    public Modul(Long id, String nombre, Cicle cicleModul){
         this.id = id;
         this.nombre = nombre;
-        this.listaUnidadesFormativas = listaUnidadesFormativas;
+        this.cicleModul = cicleModul;
     }
 
     public Modul(){
@@ -72,6 +77,16 @@ public class Modul implements Serializable{
     public void setListaUnidadesFormativas(List<UnitatFormativa> listaUnidadesFormativas) {
         this.listaUnidadesFormativas = listaUnidadesFormativas;
     }
+
+    public Cicle getCicleModul() {
+        return cicleModul;
+    }
+
+    public void setCicleModul(Cicle cicleModul) {
+        this.cicleModul = cicleModul;
+    }
+    
+    
 
     @Override
     public int hashCode() {
