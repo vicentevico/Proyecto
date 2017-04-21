@@ -23,10 +23,12 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= Alumne.CONSULTA_NOM, query="SELECT c FROM Cicle c WHERE c.moduls=:modul")})
+@NamedQuery(name= Cicle.CONSULTA_MODUL, query="SELECT c FROM Cicle c WHERE c.moduls=:moduls")})
 @Table(name = "AV_CICLES")
 public class Cicle implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    public static final String CONSULTA_MODUL = "buscar_modul";
 
     //Atributos
     @Id
@@ -102,8 +104,6 @@ public class Cicle implements Serializable {
     public void setFamiliaCicle(Familia familiaCicle) {
         this.familiaCicle = familiaCicle;
     }
-    
-    
 
     @Override
     public int hashCode() {
