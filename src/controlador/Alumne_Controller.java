@@ -57,8 +57,9 @@ public class Alumne_Controller implements AlumneDAO{
 
         System.out.println("Consulta");
         //List<Client> lista = (List<Client>) em.createQuery("FROM Client").getResultList();
-        Query c = em.createQuery("FROM Client");
-        List<Alumne> lista = (List<Alumne>) c.getResultList();
+        Query a = em.createQuery("FROM Alumne");
+        List<Alumne> lista = (List<Alumne>) a.getResultList();
+        
 
         System.out.println("close");
         em.close();
@@ -83,7 +84,6 @@ public class Alumne_Controller implements AlumneDAO{
         em.persist(t);
 
         System.out.println("commit");
-        //em.getTransaction().commit();
         etx.commit();
 
         System.out.println("close");
@@ -97,7 +97,6 @@ public class Alumne_Controller implements AlumneDAO{
         EntityManager em = oem.getEntityManager();
 
         // El persistim a la base de dades
-        //em.getTransaction().begin();
         EntityTransaction etx = em.getTransaction();
 
         System.out.println("begin");
@@ -107,7 +106,6 @@ public class Alumne_Controller implements AlumneDAO{
         em.remove(em.contains(t) ? t : em.merge(t));
 
         System.out.println("commit");
-        //em.getTransaction().commit();
         etx.commit();
 
         System.out.println("close");
@@ -121,7 +119,6 @@ public class Alumne_Controller implements AlumneDAO{
         EntityManager em = oem.getEntityManager();
 
         // El persistim a la base de dades
-        //em.getTransaction().begin();
         EntityTransaction etx = em.getTransaction();
 
         System.out.println("begin");
@@ -131,7 +128,6 @@ public class Alumne_Controller implements AlumneDAO{
         em.merge(t);
 
         System.out.println("commit");
-        //em.getTransaction().commit();
         etx.commit();
 
         System.out.println("close");

@@ -10,6 +10,11 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -17,6 +22,8 @@ import javax.persistence.Table;
  * @author ALUMNEDAM
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Alumne.CONSULTA_NOM, query="SELECT c FROM Cicle c WHERE c.moduls=:modul")})
 @Table(name = "AV_CICLES")
 public class Cicle implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -26,16 +33,22 @@ public class Cicle implements Serializable {
     private Long id;
     private String nom;
     private String grau;
+    
+    @OneToMany(mappedBy="cicleModul")
     private List<Modul> moduls;
+    @OneToMany(mappedBy="cicleCurs")
     private List<Curs> cursos;
+    
+    @ManyToOne
+    @JoinColumn(name = "familia")
+    private Familia familiaCicle;
 
     //Constuctores
-    public Cicle(Long id, String nom, String grau, List<Modul> moduls, List<Curs> cursos) {
+    public Cicle(Long id, String nom, String grau, Familia familiaCicle) {
         this.id = id;
         this.nom = nom;
         this.grau = grau;
-        this.moduls = moduls;
-        this.cursos = cursos;
+        this.familiaCicle = familiaCicle;
     }
 
     public Cicle() {
@@ -81,6 +94,16 @@ public class Cicle implements Serializable {
     public void setCursos(List<Curs> cursos) {
         this.cursos = cursos;
     }
+
+    public Familia getFamiliaCicle() {
+        return familiaCicle;
+    }
+
+    public void setFamiliaCicle(Familia familiaCicle) {
+        this.familiaCicle = familiaCicle;
+    }
+    
+    
 
     @Override
     public int hashCode() {

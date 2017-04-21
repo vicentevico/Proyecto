@@ -6,11 +6,11 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -26,13 +26,13 @@ public class Familia implements Serializable {
     @Id
     private Long id;
     private String nom;
+    @OneToMany(mappedBy="familiaCicle")
     private List<Cicle> cicles;
 
     //Constructores
-    public Familia(Long id, String nom, List<Cicle> cicles) {
+    public Familia(Long id, String nom) {
         this.id = id;
         this.nom = nom;
-        this.cicles = cicles;
     }
     
     public Familia() {
