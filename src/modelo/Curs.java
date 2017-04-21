@@ -29,7 +29,7 @@ public class Curs implements Serializable{
     private static final long serialVersionUID = 1L;
     
     //Nombre query
-    public static final String CONSULTA = "nombreCurso";
+    public static final String CONSULTA = "CURSO";
     
     //Atributos
     @Id
@@ -40,7 +40,7 @@ public class Curs implements Serializable{
 
     
     //Constructores
-    public Curs(Long id, EnumCurso enumCurso, ArrayList<UnitatFormativa> listaUnidadesFormativas){
+    public Curs(Long id, EnumCurso enumCurso, List<UnitatFormativa> listaUnidadesFormativas){
         this.id = id;
         this.nombreCurso = enumCurso;
         this.listaUnidadesFormativas = listaUnidadesFormativas;
