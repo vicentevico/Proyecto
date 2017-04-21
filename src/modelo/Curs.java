@@ -11,6 +11,8 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -29,7 +31,7 @@ public class Curs implements Serializable{
     private static final long serialVersionUID = 1L;
     
     //Nombre query
-    public static final String CONSULTA = "nombreCurso";
+    public static final String CONSULTA = "CURSO";
     
     //Atributos
     @Id
@@ -37,13 +39,16 @@ public class Curs implements Serializable{
     private EnumCurso nombreCurso;
     @OneToMany(mappedBy="idCurs")
     private List<UnitatFormativa> listaUnidadesFormativas;
+    @ManyToOne
+    @JoinColumn(name="cicleCurs")
+    private Cicle cicleCurs;
 
     
     //Constructores
-    public Curs(Long id, EnumCurso enumCurso, ArrayList<UnitatFormativa> listaUnidadesFormativas){
+    public Curs(Long id, EnumCurso enumCurso, Cicle cicleCurs){
         this.id = id;
         this.nombreCurso = enumCurso;
-        this.listaUnidadesFormativas = listaUnidadesFormativas;
+        this.cicleCurs = cicleCurs;
     }
     
     public Curs(){
@@ -74,6 +79,16 @@ public class Curs implements Serializable{
     public void setListaUnidadesFormativas(List<UnitatFormativa> listaUnidadesFormativas) {
         this.listaUnidadesFormativas = listaUnidadesFormativas;
     }
+
+    public Cicle getCicleCurs() {
+        return cicleCurs;
+    }
+
+    public void setCicleCurs(Cicle cicleCurs) {
+        this.cicleCurs = cicleCurs;
+    }
+    
+    
 
     @Override
     public int hashCode() {

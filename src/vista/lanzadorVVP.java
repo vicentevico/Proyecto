@@ -20,6 +20,8 @@ public class lanzadorVVP {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         Curs_Controller cc = new Curs_Controller();
         
         Curs curso = new Curs();

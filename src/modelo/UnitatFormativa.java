@@ -21,13 +21,13 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= Curs.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.nomUnitatFormativa=:nomUnitatFormativa")})
+@NamedQuery(name= UnitatFormativa.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.nomUnitatFormativa=:nomUnitatFormativa")})
 @Table(name="AV_UNITATS_FORMATIVES")
 public class UnitatFormativa implements Serializable{
     private static final long serialVersionUID = 1L;
     
     //Nombre query
-    public static final String CONSULTA = "idCurso";
+    public static final String CONSULTA = "idUnitatFormativa";
     //Atributos
     @Id
     private Long id;

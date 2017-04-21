@@ -7,9 +7,12 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -21,26 +24,29 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= Curs.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.idCurs=:idCurs")})
+@NamedQuery(name= Modul.CONSULTA, query="SELECT c FROM Modul c WHERE c.nombre=:nombre")})
 @Table(name="AV_MODULS")
 public class Modul implements Serializable{
     private static final long serialVersionUID = 1L;
     
     //Nombre query
-    public static final String CONSULTA = "idCurso";
+    public static final String CONSULTA = "MODUL";
     
     //Atributos
     @Id
     private Long id;
     private String nombre;
     @OneToMany(mappedBy="idModul")
-    private ArrayList<UnitatFormativa> listaUnidadesFormativas;
+    private List<UnitatFormativa> listaUnidadesFormativas;
+    @ManyToOne
+    @JoinColumn(name="cicleModul")
+    private Cicle cicleModul;
     
     //Constructores
-    public Modul(Long id, String nombre, ArrayList<UnitatFormativa> listaUnidadesFormativas){
+    public Modul(Long id, String nombre, Cicle cicleModul){
         this.id = id;
         this.nombre = nombre;
-        this.listaUnidadesFormativas = listaUnidadesFormativas;
+        this.cicleModul = cicleModul;
     }
 
     public Modul(){
@@ -64,13 +70,23 @@ public class Modul implements Serializable{
         this.nombre = nombre;
     }
 
-    public ArrayList<UnitatFormativa> getListaUnidadesFormativas() {
+    public List<UnitatFormativa> getListaUnidadesFormativas() {
         return listaUnidadesFormativas;
     }
 
-    public void setListaUnidadesFormativas(ArrayList<UnitatFormativa> listaUnidadesFormativas) {
+    public void setListaUnidadesFormativas(List<UnitatFormativa> listaUnidadesFormativas) {
         this.listaUnidadesFormativas = listaUnidadesFormativas;
     }
+
+    public Cicle getCicleModul() {
+        return cicleModul;
+    }
+
+    public void setCicleModul(Cicle cicleModul) {
+        this.cicleModul = cicleModul;
+    }
+    
+    
 
     @Override
     public int hashCode() {
