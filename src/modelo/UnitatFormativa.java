@@ -40,14 +40,18 @@ public class UnitatFormativa implements Serializable{
     @ManyToOne
     @JoinColumn(name="idModul")
     private Modul idModul;
+    @ManyToOne
+    @JoinColumn(name="UFMatricula")
+    private Matricula idMatricula;
     
     //Constructores
-    public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul){
+    public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul, Matricula idMatricula){
         this.id = id;
         this.nomUnitatFormativa = nombreUnitatFormativa;
         this.horas = horas;
         this.idCurs = idCurs;
         this.idModul = idModul;
+        this.idMatricula = idMatricula;
     }
     
     public UnitatFormativa(){
@@ -94,6 +98,16 @@ public class UnitatFormativa implements Serializable{
     public void setIdCurs(Curs idCurs) {
         this.idCurs = idCurs;
     }
+
+    public Matricula getIdMatricula() {
+        return idMatricula;
+    }
+
+    public void setIdMatricula(Matricula idMatricula) {
+        this.idMatricula = idMatricula;
+    }
+    
+    
 
     @Override
     public int hashCode() {

@@ -9,8 +9,10 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -35,14 +37,18 @@ public class Alumne implements Serializable {
     private String cognom;
     private String correu;
     private long telefon;
+    @OneToOne
+    @JoinColumn(name="matriculaAlumne")
+    private Matricula matriculaAlumne;
 
     //Constructores
-    public Alumne(String nif, String nom, String cognom, String correu, int telefon) {
+    public Alumne(String nif, String nom, String cognom, String correu, int telefon, Matricula matriculaAlumne) {
         this.nif = nif;
         this.nom = nom;
         this.cognom = cognom;
         this.correu = correu;
         this.telefon = telefon;
+        this.matriculaAlumne = matriculaAlumne;
     }
     
     public Alumne(){
@@ -87,6 +93,14 @@ public class Alumne implements Serializable {
 
     public void setTelefon(long telefon) {
         this.telefon = telefon;
+    }
+
+    public Matricula getMatriculaAlumne() {
+        return matriculaAlumne;
+    }
+
+    public void setMatriculaAlumne(Matricula matriculaAlumne) {
+        this.matriculaAlumne = matriculaAlumne;
     }
 
     @Override
