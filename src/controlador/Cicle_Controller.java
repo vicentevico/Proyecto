@@ -10,7 +10,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-import modelo.Alumne;
 import modelo.Cicle;
 
 /**
@@ -21,20 +20,18 @@ public class Cicle_Controller implements CicleDAO{
 
     @Override
     public List<Cicle> buscarCiclesPerNomModul(String nomModul) {
-    /*    // Recupera el entity manager
+        // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
-        Query query = em.createNamedQuery(Alumne.CONSULTA_COGNOM,Alumne.class);
-        query.setParameter("nom", nomModul);
-        Alumne a = (Alumne) query.getSingleResult();
-        List<Alumne> lista = (List<Alumne>) a.getResultList();
+        Query query = em.createNamedQuery(Cicle.CONSULTA_MODUL,Cicle.class);
+        query.setParameter("moduls", nomModul);
+        List<Cicle> lista = (List<Cicle>) query.getResultList();
 
         System.out.println("close");
         em.close();
 
-        return a; */
-        return null;
+        return lista;
     }
 
     @Override

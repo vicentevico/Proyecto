@@ -10,6 +10,8 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -18,9 +20,13 @@ import javax.persistence.Table;
  * @author ALUMNEDAM
  */
 @Entity
+@NamedQueries({
+@NamedQuery(name= Familia.CONSULTA_FAMILA, query="SELECT c FROM Familia c WHERE c.cicles=:cicles")})
 @Table(name = "AV_FAMILIES")
 public class Familia implements Serializable {
     private static final long serialVersionUID = 1L;
+    
+    public static final String CONSULTA_FAMILA = "buscar_familia";
 
     //Atributos
     @Id
