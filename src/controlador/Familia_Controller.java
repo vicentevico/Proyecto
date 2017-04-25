@@ -33,6 +33,20 @@ public class Familia_Controller implements FamiliaDAO{
 
         return lista;
     }
+    
+    public Familia Buscar(Long id) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        
+        Familia f = (Familia) em.find(Familia.class, id);
+
+        System.out.println("close");
+        em.close();
+
+        return f;
+    }
 
     @Override
     public void afegir(Familia t) {
