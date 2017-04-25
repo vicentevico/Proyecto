@@ -17,11 +17,12 @@ import modelo.Cicle;
  * @author ALUMNEDAM
  */
 public class Cicle_Controller implements CicleDAO{
+    EntityManager em;
 
     @Override
     public List<Cicle> buscarCiclesPerNomModul(String nomModul) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Cicle.CONSULTA_MODUL,Cicle.class);
@@ -36,12 +37,11 @@ public class Cicle_Controller implements CicleDAO{
     
     public Cicle buscar(Long id) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         Cicle p = (Cicle) em.find(Cicle.class, id);
 
         System.out.println("close");
-        em.close();
 
         return p;
     }
@@ -50,7 +50,7 @@ public class Cicle_Controller implements CicleDAO{
     public void afegir(Cicle t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         //em.getTransaction().begin();
@@ -73,7 +73,7 @@ public class Cicle_Controller implements CicleDAO{
     public void eliminar(Cicle t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -95,7 +95,7 @@ public class Cicle_Controller implements CicleDAO{
     public void modificar(Cicle t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -113,6 +113,9 @@ public class Cicle_Controller implements CicleDAO{
         em.close();
     }
     
+    public void cerrarConexion(){
+        em.close();
+    }
     
     
 }

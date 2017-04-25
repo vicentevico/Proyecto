@@ -76,6 +76,13 @@ public class lanzadorVVP {
 //        ufc.afegir(uf);
 
 
+
+
+
+
+
+//########################### Busquedas ###############################//
+
 //        //Obtenemos el alumno por nombre y lo mostramos por pantalla
 //        Alumne al = ac.buscarPerNom("Cacahuete");
 //        System.out.println(al.toString());
@@ -83,9 +90,18 @@ public class lanzadorVVP {
 //        //Obtenemos la familia por id y la mostramos por pantalla
 //        Familia fa = fc.Buscar(1L);
 //        System.out.println(fa.toString());
-//        
 //        List<Cicle> listaCiclos = fa.getCicles();
 //        listaCiclos.toString();
+//
+        //Obtenemos el ciclo por id y lo mostramos por pantalla
+        Cicle cic = cicleC.buscar(1L);
+        System.out.println(cic.toString());
+        System.out.println(cic.getCursos().toString());
+        cicleC.cerrarConexion();
+//
+//        //Obtenemos el curso por id y lo mostramos por pantalla
+//        Curs cur = cursC.buscarPerNom(EnumCurso.PRIMERO);
+//        System.out.println(cur.toString());
         
         
             

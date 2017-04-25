@@ -17,11 +17,12 @@ import modelo.UnitatFormativa;
  * @author Vicente
  */
 public class Modul_Controller implements ModulDAO{
-
+    EntityManager em;
+    
     @Override
     public Modul buscarPerNom(String nombre) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Modul.CONSULTA,Modul.class);
@@ -38,7 +39,7 @@ public class Modul_Controller implements ModulDAO{
     public void afegir(Modul t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -60,7 +61,7 @@ public class Modul_Controller implements ModulDAO{
     public void eliminar(Modul t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -82,7 +83,7 @@ public class Modul_Controller implements ModulDAO{
     public void modificar(Modul t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -97,6 +98,10 @@ public class Modul_Controller implements ModulDAO{
         etx.commit();
 
         System.out.println("close");
+        em.close();
+    }
+    
+    public void cerrarConexion(){
         em.close();
     }
     

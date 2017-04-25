@@ -16,12 +16,13 @@ import modelo.UnitatFormativa;
  * @author Vicente
  */
 public class UnitatFormativa_Controller implements UnitatFormativaDAO{
-
+    EntityManager em;
+    
     @Override
     public void afegir(UnitatFormativa t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -43,7 +44,7 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
     public void eliminar(UnitatFormativa t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -65,7 +66,7 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
     public void modificar(UnitatFormativa t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -86,7 +87,7 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
     @Override
     public UnitatFormativa buscarPerNom(String nomUnitatFormativa) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(UnitatFormativa.CONSULTA,UnitatFormativa.class);
@@ -97,6 +98,10 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
         em.close();
 
         return uf;
+    }
+    
+    public void cerrarConexion(){
+        em.close();
     }
     
 }

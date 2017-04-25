@@ -17,12 +17,13 @@ import utilidades.EnumCurso;
  * @author Vicente
  */
 public class Curs_Controller implements CursDAO{
-
+    EntityManager em; 
+    
     @Override
     public void afegir(Curs t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -44,7 +45,7 @@ public class Curs_Controller implements CursDAO{
     public void eliminar(Curs t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -66,7 +67,7 @@ public class Curs_Controller implements CursDAO{
     public void modificar(Curs t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -87,7 +88,7 @@ public class Curs_Controller implements CursDAO{
     @Override
     public Curs buscarPerNom(EnumCurso nombreCurso) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Curs.CONSULTA,Curs.class);
@@ -98,5 +99,9 @@ public class Curs_Controller implements CursDAO{
         em.close();
 
         return c;
+    }
+    
+    public void cerrarConexion(){
+        em.close();
     }
 }

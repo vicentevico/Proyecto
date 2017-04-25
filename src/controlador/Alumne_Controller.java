@@ -17,11 +17,12 @@ import modelo.Alumne;
  * @author ALUMNEDAM
  */
 public class Alumne_Controller implements AlumneDAO{
-
+    EntityManager em;
+            
     @Override
     public Alumne buscarPerNom(String nom) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Alumne.CONSULTA_NOM,Alumne.class);
@@ -37,7 +38,7 @@ public class Alumne_Controller implements AlumneDAO{
     @Override
     public Alumne buscarPerCognom(String cognom) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Alumne.CONSULTA_COGNOM,Alumne.class);
@@ -53,7 +54,7 @@ public class Alumne_Controller implements AlumneDAO{
     @Override
     public List<Alumne> buscarTots() {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("Consulta");
         //List<Client> lista = (List<Client>) em.createQuery("FROM Client").getResultList();
@@ -71,7 +72,7 @@ public class Alumne_Controller implements AlumneDAO{
     public void afegir(Alumne t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         //em.getTransaction().begin();
@@ -94,7 +95,7 @@ public class Alumne_Controller implements AlumneDAO{
     public void eliminar(Alumne t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -116,7 +117,7 @@ public class Alumne_Controller implements AlumneDAO{
     public void modificar(Alumne t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -131,6 +132,10 @@ public class Alumne_Controller implements AlumneDAO{
         etx.commit();
 
         System.out.println("close");
+        em.close();
+    }
+    
+    public void cerrarConexion(){
         em.close();
     }
     

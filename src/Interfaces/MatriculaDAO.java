@@ -5,6 +5,7 @@
  */
 package Interfaces;
 
+import modelo.Alumne;
 import modelo.Matricula;
 
 
@@ -20,5 +21,5 @@ public interface MatriculaDAO extends GenericaDAO<Matricula>{
      * @param nomAlumne
      * @return 
      */
-    Matricula buscarPerAlumne(String nomAlumne);
+    Matricula buscarPerAlumne(Alumne alumne);
 }

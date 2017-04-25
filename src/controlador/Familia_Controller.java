@@ -17,11 +17,12 @@ import modelo.Familia;
  * @author ALUMNEDAM
  */
 public class Familia_Controller implements FamiliaDAO{
+    EntityManager em;
 
     @Override
     public List<Familia> buscarFamiliaPerNomCicle(String nomCicle) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Familia.CONSULTA_FAMILA,Familia.class);
@@ -36,7 +37,7 @@ public class Familia_Controller implements FamiliaDAO{
     
     public Familia Buscar(Long id) {
         // Recupera el entity manager
-        EntityManager em = new EM_Controller().getEntityManager();
+        em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         
@@ -52,7 +53,7 @@ public class Familia_Controller implements FamiliaDAO{
     public void afegir(Familia t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         //em.getTransaction().begin();
@@ -75,7 +76,7 @@ public class Familia_Controller implements FamiliaDAO{
     public void eliminar(Familia t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -97,7 +98,7 @@ public class Familia_Controller implements FamiliaDAO{
     public void modificar(Familia t) {
         // Recupera el entity manager
         EM_Controller oem = new EM_Controller();
-        EntityManager em = oem.getEntityManager();
+        em = oem.getEntityManager();
 
         // El persistim a la base de dades
         EntityTransaction etx = em.getTransaction();
@@ -112,6 +113,10 @@ public class Familia_Controller implements FamiliaDAO{
         etx.commit();
 
         System.out.println("close");
+        em.close();
+    }
+    
+    public void cerrarConexion(){
         em.close();
     }
     

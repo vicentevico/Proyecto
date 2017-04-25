@@ -53,6 +53,7 @@ public class Curs implements Serializable{
     
     public Curs(){
         listaUnidadesFormativas = new ArrayList();
+            
     }
     
     //Getters & Setters
@@ -117,6 +118,6 @@ public class Curs implements Serializable{
 
     @Override
     public String toString() {
-        return "modelo.Curs[ id=" + id + " ]";
+        return "modelo.Curs[ id=" + id + " nom=" + nombreCurso + " ]";
     }
 }
