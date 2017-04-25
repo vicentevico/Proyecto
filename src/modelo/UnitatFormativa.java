@@ -27,7 +27,7 @@ public class UnitatFormativa implements Serializable{
     private static final long serialVersionUID = 1L;
     
     //Nombre query
-    public static final String CONSULTA = "idUnitatFormativa";
+    public static final String CONSULTA = "UF_PER_NOM";
     //Atributos
     @Id
     private Long id;
