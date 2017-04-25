@@ -35,9 +35,6 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -57,9 +54,6 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -79,9 +73,6 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -93,9 +84,6 @@ public class UnitatFormativa_Controller implements UnitatFormativaDAO{
         Query query = em.createNamedQuery(UnitatFormativa.CONSULTA,UnitatFormativa.class);
         query.setParameter("nomUnitatFormativa", nomUnitatFormativa);
         UnitatFormativa uf = (UnitatFormativa) query.getSingleResult();
-
-        System.out.println("close");
-        em.close();
 
         return uf;
     }

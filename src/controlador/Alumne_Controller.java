@@ -29,9 +29,6 @@ public class Alumne_Controller implements AlumneDAO{
         query.setParameter("nom", nom);
         Alumne a = (Alumne) query.getSingleResult();
 
-        System.out.println("close");
-        em.close();
-
         return a;
     }
 
@@ -45,9 +42,6 @@ public class Alumne_Controller implements AlumneDAO{
         query.setParameter("nom", cognom);
         Alumne a = (Alumne) query.getSingleResult();
 
-        System.out.println("close");
-        em.close();
-
         return a;
     }
 
@@ -60,10 +54,6 @@ public class Alumne_Controller implements AlumneDAO{
         //List<Client> lista = (List<Client>) em.createQuery("FROM Client").getResultList();
         Query a = em.createQuery("FROM Alumne");
         List<Alumne> lista = (List<Alumne>) a.getResultList();
-        
-
-        System.out.println("close");
-        em.close();
         
         return lista;
     }
@@ -86,9 +76,6 @@ public class Alumne_Controller implements AlumneDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -108,9 +95,6 @@ public class Alumne_Controller implements AlumneDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -130,9 +114,6 @@ public class Alumne_Controller implements AlumneDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){

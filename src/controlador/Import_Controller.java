@@ -35,9 +35,6 @@ public class Import_Controller implements ImportDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -57,9 +54,6 @@ public class Import_Controller implements ImportDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -79,9 +73,6 @@ public class Import_Controller implements ImportDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){

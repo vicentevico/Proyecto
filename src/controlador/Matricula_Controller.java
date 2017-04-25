@@ -29,9 +29,6 @@ public class Matricula_Controller implements MatriculaDAO{
         query.setParameter("alumne", alumne);
         Matricula a = (Matricula) query.getSingleResult();
 
-        System.out.println("close");
-        em.close();
-
         return a;
     }
 
@@ -53,9 +50,6 @@ public class Matricula_Controller implements MatriculaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -75,9 +69,6 @@ public class Matricula_Controller implements MatriculaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -97,9 +88,6 @@ public class Matricula_Controller implements MatriculaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){

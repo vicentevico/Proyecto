@@ -36,9 +36,6 @@ public class Curs_Controller implements CursDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -58,9 +55,6 @@ public class Curs_Controller implements CursDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -80,9 +74,6 @@ public class Curs_Controller implements CursDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     @Override
@@ -94,9 +85,6 @@ public class Curs_Controller implements CursDAO{
         Query query = em.createNamedQuery(Curs.CONSULTA,Curs.class);
         query.setParameter("nombreCurso", nombreCurso);
         Curs c = (Curs) query.getSingleResult();
-
-        System.out.println("close");
-        em.close();
 
         return c;
     }

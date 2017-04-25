@@ -36,7 +36,7 @@ public class Matricula implements Serializable {
     @OneToOne(mappedBy = "matriculaAlumne")
     private Alumne alumne;
     private String data;
-    @OneToMany(mappedBy="UFMatricula")
+    @OneToMany(mappedBy="idMatricula")
     private List<UnitatFormativa> unitatsFormatives;
     private EnumModalidad modalitat;
     private EnumDescompte descompte;

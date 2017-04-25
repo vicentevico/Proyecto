@@ -29,9 +29,6 @@ public class Modul_Controller implements ModulDAO{
         query.setParameter("nombre", nombre);
         Modul m = (Modul) query.getSingleResult();
 
-        System.out.println("close");
-        em.close();
-
         return m;
     }
 
@@ -52,9 +49,6 @@ public class Modul_Controller implements ModulDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -74,9 +68,6 @@ public class Modul_Controller implements ModulDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -96,9 +87,6 @@ public class Modul_Controller implements ModulDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){

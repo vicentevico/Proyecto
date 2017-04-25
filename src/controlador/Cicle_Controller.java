@@ -29,9 +29,6 @@ public class Cicle_Controller implements CicleDAO{
         query.setParameter("moduls", nomModul);
         List<Cicle> lista = (List<Cicle>) query.getResultList();
 
-        System.out.println("close");
-        em.close();
-
         return lista;
     }
     
@@ -40,8 +37,6 @@ public class Cicle_Controller implements CicleDAO{
         em = new EM_Controller().getEntityManager();
 
         Cicle p = (Cicle) em.find(Cicle.class, id);
-
-        System.out.println("close");
 
         return p;
     }
@@ -64,9 +59,6 @@ public class Cicle_Controller implements CicleDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -86,9 +78,6 @@ public class Cicle_Controller implements CicleDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -108,9 +97,6 @@ public class Cicle_Controller implements CicleDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){

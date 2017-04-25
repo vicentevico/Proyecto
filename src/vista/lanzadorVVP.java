@@ -9,6 +9,7 @@ import controlador.Alumne_Controller;
 import controlador.Cicle_Controller;
 import controlador.Curs_Controller;
 import controlador.Familia_Controller;
+import controlador.Matricula_Controller;
 import controlador.Modul_Controller;
 import controlador.UnitatFormativa_Controller;
 import java.util.ArrayList;
@@ -17,9 +18,12 @@ import modelo.Alumne;
 import modelo.Cicle;
 import modelo.Curs;
 import modelo.Familia;
+import modelo.Matricula;
 import modelo.Modul;
 import modelo.UnitatFormativa;
 import utilidades.EnumCurso;
+import utilidades.EnumDescompte;
+import utilidades.EnumModalidad;
 
 /**
  *
@@ -55,27 +59,47 @@ public class lanzadorVVP {
         Curs_Controller cursC = new Curs_Controller();
         Modul_Controller mc = new Modul_Controller();
         UnitatFormativa_Controller ufc = new UnitatFormativa_Controller();
+        Matricula_Controller matriculaC = new Matricula_Controller();
         
 
-//        Alumne alumne = new Alumne("53765476A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214);
+//        Alumne alumne = new Alumne("53765476A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
 //        ac.afegir(alumne);
+//        ac.cerrarConexion();
 //        
 //        Familia familia = new Familia(1L, "Familia prueba");
 //        fc.afegir(familia);
+//        fc.cerrarConexion();
 //
 //        Cicle cicle = new Cicle(1L, "cicle prueba", "Superior", fc.Buscar(1L));
 //        cicleC.afegir(cicle);
+//        cicleC.cerrarConexion();
 //        
 //        Curs curs = new Curs(1L, EnumCurso.PRIMERO, cicleC.buscar(1L));
 //        cursC.afegir(curs);
+//        cursC.cerrarConexion();
 //        
 //        Modul modul = new Modul(1L, "modul prueba", cicleC.buscar(1L));
 //        mc.afegir(modul);
+//        mc.cerrarConexion();
 //        
-//        UnitatFormativa uf = new UnitatFormativa(1L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"));
+//        UnitatFormativa uf = new UnitatFormativa(1L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"), null);
 //        ufc.afegir(uf);
-
-
+//        ufc.cerrarConexion();
+//
+//        Matricula matricula = new Matricula(1L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO);
+//        matriculaC.afegir(matricula);
+//        matriculaC.cerrarConexion();
+        
+        
+        Alumne alModificar = ac.buscarPerNom("Cacahuete");
+        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
+        ac.modificar(alModificar);
+        ac.cerrarConexion();
+//        
+//        UnitatFormativa ufModificar = ufc.buscarPerNom("unitat proba");
+//        ufModificar.setIdMatricula(matriculaC.buscarPerAlumne(alModificar));
+//        ufc.modificar(ufModificar);
+//        ufc.cerrarConexion();
 
 
 
@@ -86,18 +110,19 @@ public class lanzadorVVP {
 //        //Obtenemos el alumno por nombre y lo mostramos por pantalla
 //        Alumne al = ac.buscarPerNom("Cacahuete");
 //        System.out.println(al.toString());
+//        ac.cerrarConexion();
 //        
 //        //Obtenemos la familia por id y la mostramos por pantalla
 //        Familia fa = fc.Buscar(1L);
 //        System.out.println(fa.toString());
-//        List<Cicle> listaCiclos = fa.getCicles();
-//        listaCiclos.toString();
+//        System.out.println(fa.getCicles().toString());
+//        fc.cerrarConexion();
 //
-        //Obtenemos el ciclo por id y lo mostramos por pantalla
-        Cicle cic = cicleC.buscar(1L);
-        System.out.println(cic.toString());
-        System.out.println(cic.getCursos().toString());
-        cicleC.cerrarConexion();
+//        //Obtenemos el ciclo por id y lo mostramos por pantalla
+//        Cicle cic = cicleC.buscar(1L);
+//        System.out.println(cic.toString());
+//        System.out.println(cic.getCursos().toString());
+//        cicleC.cerrarConexion();
 //
 //        //Obtenemos el curso por id y lo mostramos por pantalla
 //        Curs cur = cursC.buscarPerNom(EnumCurso.PRIMERO);

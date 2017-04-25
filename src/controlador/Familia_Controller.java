@@ -29,9 +29,6 @@ public class Familia_Controller implements FamiliaDAO{
         query.setParameter("cicles", nomCicle);
         List<Familia> lista = (List<Familia>) query.getResultList();
 
-        System.out.println("close");
-        em.close();
-
         return lista;
     }
     
@@ -42,9 +39,6 @@ public class Familia_Controller implements FamiliaDAO{
         System.out.println("busqueda");
         
         Familia f = (Familia) em.find(Familia.class, id);
-
-        System.out.println("close");
-        em.close();
 
         return f;
     }
@@ -67,9 +61,6 @@ public class Familia_Controller implements FamiliaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -89,9 +80,6 @@ public class Familia_Controller implements FamiliaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
 
     @Override
@@ -111,9 +99,6 @@ public class Familia_Controller implements FamiliaDAO{
 
         System.out.println("commit");
         etx.commit();
-
-        System.out.println("close");
-        em.close();
     }
     
     public void cerrarConexion(){
