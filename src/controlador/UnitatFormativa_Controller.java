@@ -15,7 +15,7 @@ import modelo.UnitatFormativa;
  *
  * @author Vicente
  */
-public class UnitatFormativa_Contorller implements UnitatFormativaDAO{
+public class UnitatFormativa_Controller implements UnitatFormativaDAO{
 
     @Override
     public void afegir(UnitatFormativa t) {

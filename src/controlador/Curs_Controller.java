@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import modelo.Curs;
+import utilidades.EnumCurso;
 
 /**
  *
@@ -84,7 +85,7 @@ public class Curs_Controller implements CursDAO{
     }
     
     @Override
-    public Curs buscarPerNom(String nombreCurso) {
+    public Curs buscarPerNom(EnumCurso nombreCurso) {
         // Recupera el entity manager
         EntityManager em = new EM_Controller().getEntityManager();
 

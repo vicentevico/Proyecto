@@ -21,7 +21,7 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= UnitatFormativa.CONSULTA, query="SELECT c FROM UntatFormativa c WHERE c.nomUnitatFormativa=:nomUnitatFormativa")})
+@NamedQuery(name= UnitatFormativa.CONSULTA, query="SELECT c FROM UnitatFormativa c WHERE c.nomUnitatFormativa=:nomUnitatFormativa")})
 @Table(name="AV_UNITATS_FORMATIVES")
 public class UnitatFormativa implements Serializable{
     private static final long serialVersionUID = 1L;

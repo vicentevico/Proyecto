@@ -6,6 +6,7 @@
 package Interfaces;
 
 import modelo.Curs;
+import utilidades.EnumCurso;
 
 /**
  *
@@ -19,5 +20,5 @@ public interface CursDAO extends GenericaDAO<Curs>{
      * @param nombreCurso nombre del curso a buscar
      * @return objeto curso
      */
-    Curs buscarPerNom(String nombreCurso);
+    Curs buscarPerNom(EnumCurso nombreCurso);
 }

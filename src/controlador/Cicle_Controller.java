@@ -33,6 +33,18 @@ public class Cicle_Controller implements CicleDAO{
 
         return lista;
     }
+    
+    public Cicle buscar(Long id) {
+        // Recupera el entity manager
+        EntityManager em = new EM_Controller().getEntityManager();
+
+        Cicle p = (Cicle) em.find(Cicle.class, id);
+
+        System.out.println("close");
+        em.close();
+
+        return p;
+    }
 
     @Override
     public void afegir(Cicle t) {
