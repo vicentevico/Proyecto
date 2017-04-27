@@ -41,9 +41,8 @@ public class Matricula implements Serializable {
     private EnumModalidad modalitat;
     private EnumDescompte descompte;
 
-    public Matricula(Long id, Alumne alumne, String data, EnumModalidad modalitat, EnumDescompte descompte) {
+    public Matricula(Long id, String data, EnumModalidad modalitat, EnumDescompte descompte) {
         this.id = id;
-        this.alumne = alumne;
         this.data = data;
         this.modalitat = modalitat;
         this.descompte = descompte;
