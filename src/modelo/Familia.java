@@ -30,14 +30,14 @@ public class Familia implements Serializable {
 
     //Atributos
     @Id
-    private Long id;
+    private Long idF;
     private String nom;
     @OneToMany(mappedBy="familiaCicle")
     private List<Cicle> cicles;
 
     //Constructores
     public Familia(Long id, String nom) {
-        this.id = id;
+        this.idF = id;
         this.nom = nom;
     }
     
@@ -46,11 +46,11 @@ public class Familia implements Serializable {
     
     //Getters & Setters
     public Long getId() {
-        return id;
+        return idF;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idF = id;
     }
 
     public String getNom() {
@@ -72,7 +72,7 @@ public class Familia implements Serializable {
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.idF);
         hash = 31 * hash + Objects.hashCode(this.nom);
         hash = 31 * hash + Objects.hashCode(this.cicles);
         return hash;
@@ -93,7 +93,7 @@ public class Familia implements Serializable {
         if (!Objects.equals(this.nom, other.nom)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idF, other.idF)) {
             return false;
         }
         if (!Objects.equals(this.cicles, other.cicles)) {
@@ -104,6 +104,6 @@ public class Familia implements Serializable {
     
     @Override
     public String toString() {
-        return "Familia{" + "id=" + id + ", nom=" + nom + ", cicles=" + "ciclos" + '}';
+        return "Familia{" + "id=" + idF + ", nom=" + nom + ", cicles=" + "ciclos" + '}';
     }
 }

@@ -30,7 +30,7 @@ public class UnitatFormativa implements Serializable{
     public static final String CONSULTA = "UF_PER_NOM";
     //Atributos
     @Id
-    private Long id;
+    private Long idUF;
     private String nomUnitatFormativa;
     private int horas;
     
@@ -46,7 +46,7 @@ public class UnitatFormativa implements Serializable{
     
     //Constructores
     public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul, Matricula idMatricula){
-        this.id = id;
+        this.idUF = id;
         this.nomUnitatFormativa = nombreUnitatFormativa;
         this.horas = horas;
         this.idCurs = idCurs;
@@ -60,11 +60,11 @@ public class UnitatFormativa implements Serializable{
     
     //Getters & Setters
     public Long getId() {
-        return id;
+        return idUF;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idUF = id;
     }
 
     public String getNomUnitatFormativa() {
@@ -112,7 +112,7 @@ public class UnitatFormativa implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.id);
+        hash = 37 * hash + Objects.hashCode(this.idUF);
         return hash;
     }
 
@@ -128,7 +128,7 @@ public class UnitatFormativa implements Serializable{
             return false;
         }
         final UnitatFormativa other = (UnitatFormativa) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idUF, other.idUF)) {
             return false;
         }
         return true;
@@ -136,6 +136,6 @@ public class UnitatFormativa implements Serializable{
     
     @Override
     public String toString() {
-        return "modelo.UnitatFormativa[ id=" + id + " ]";
+        return "modelo.UnitatFormativa[ id=" + idUF + " ]";
     }
 }

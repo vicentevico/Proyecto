@@ -32,7 +32,7 @@ public class Cicle implements Serializable {
 
     //Atributos
     @Id
-    private Long id;
+    private Long idCicle;
     private String nom;
     private String grau;
     
@@ -47,7 +47,7 @@ public class Cicle implements Serializable {
 
     //Constuctores
     public Cicle(Long id, String nom, String grau, Familia familiaCicle) {
-        this.id = id;
+        this.idCicle = id;
         this.nom = nom;
         this.grau = grau;
         this.familiaCicle = familiaCicle;
@@ -58,11 +58,11 @@ public class Cicle implements Serializable {
     
     //Getters & Setters
     public Long getId() {
-        return id;
+        return idCicle;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idCicle = id;
     }
 
     public String getNom() {
@@ -108,7 +108,7 @@ public class Cicle implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.idCicle);
         hash = 53 * hash + Objects.hashCode(this.nom);
         hash = 53 * hash + Objects.hashCode(this.grau);
         hash = 53 * hash + Objects.hashCode(this.moduls);
@@ -134,7 +134,7 @@ public class Cicle implements Serializable {
         if (!Objects.equals(this.grau, other.grau)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idCicle, other.idCicle)) {
             return false;
         }
         if (!Objects.equals(this.moduls, other.moduls)) {
@@ -150,6 +150,6 @@ public class Cicle implements Serializable {
 
     @Override
     public String toString() {
-        return "Cicle{" + "id=" + id + ", nom=" + nom + ", grau=" + grau + ", moduls=" + "modulos" + ", cursos=" + "cursos" + '}';
+        return "Cicle{" + "id=" + idCicle + ", nom=" + nom + ", grau=" + grau + ", moduls=" + "modulos" + ", cursos=" + "cursos" + '}';
     }    
 }

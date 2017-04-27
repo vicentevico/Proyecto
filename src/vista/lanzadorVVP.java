@@ -18,6 +18,7 @@ import modelo.Alumne;
 import modelo.Cicle;
 import modelo.Curs;
 import modelo.Familia;
+import modelo.Import;
 import modelo.Matricula;
 import modelo.Modul;
 import modelo.UnitatFormativa;
@@ -85,16 +86,17 @@ public class lanzadorVVP {
 //        UnitatFormativa uf = new UnitatFormativa(1L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"), null);
 //        ufc.afegir(uf);
 //        ufc.cerrarConexion();
-//
-//        Matricula matricula = new Matricula(1L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO);
-//        matriculaC.afegir(matricula);
-//        matriculaC.cerrarConexion();
+
+        Import importe = new Import(1L, "400€");
+        Matricula matricula = new Matricula(5L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
+        matriculaC.afegir(matricula);
+        matriculaC.cerrarConexion();
+//        
         
-        
-        Alumne alModificar = ac.buscarPerNom("Cacahuete");
-        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
-        ac.modificar(alModificar);
-        ac.cerrarConexion();
+//        Alumne alModificar = ac.buscarPerNom("Cacahuete");
+//        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
+//        ac.modificar(alModificar);
+//        ac.cerrarConexion();
 //        
 //        UnitatFormativa ufModificar = ufc.buscarPerNom("unitat proba");
 //        ufModificar.setIdMatricula(matriculaC.buscarPerAlumne(alModificar));

@@ -35,7 +35,7 @@ public class Curs implements Serializable{
     
     //Atributos
     @Id
-    private Long id;
+    private Long idCurs;
     private EnumCurso nombreCurso;
     @OneToMany(mappedBy="idCurs")
     private List<UnitatFormativa> listaUnidadesFormativas;
@@ -46,7 +46,7 @@ public class Curs implements Serializable{
     
     //Constructores
     public Curs(Long id, EnumCurso enumCurso, Cicle cicleCurs){
-        this.id = id;
+        this.idCurs = id;
         this.nombreCurso = enumCurso;
         this.cicleCurs = cicleCurs;
     }
@@ -58,11 +58,11 @@ public class Curs implements Serializable{
     
     //Getters & Setters
     public Long getId() {
-        return id;
+        return idCurs;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idCurs = id;
     }
 
     public EnumCurso getNombreCurso() {
@@ -94,7 +94,7 @@ public class Curs implements Serializable{
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 31 * hash + Objects.hashCode(this.id);
+        hash = 31 * hash + Objects.hashCode(this.idCurs);
         return hash;
     }
 
@@ -110,7 +110,7 @@ public class Curs implements Serializable{
             return false;
         }
         final Curs other = (Curs) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idCurs, other.idCurs)) {
             return false;
         }
         return true;
@@ -118,6 +118,6 @@ public class Curs implements Serializable{
 
     @Override
     public String toString() {
-        return "modelo.Curs[ id=" + id + " nom=" + nombreCurso + " ]";
+        return "modelo.Curs[ id=" + idCurs + " nom=" + nombreCurso + " ]";
     }
 }

@@ -34,7 +34,7 @@ public class Modul implements Serializable{
     
     //Atributos
     @Id
-    private Long id;
+    private Long idModul;
     private String nombre;
     @OneToMany(mappedBy="idModul")
     private List<UnitatFormativa> listaUnidadesFormativas;
@@ -44,7 +44,7 @@ public class Modul implements Serializable{
     
     //Constructores
     public Modul(Long id, String nombre, Cicle cicleModul){
-        this.id = id;
+        this.idModul = id;
         this.nombre = nombre;
         this.cicleModul = cicleModul;
     }
@@ -55,11 +55,11 @@ public class Modul implements Serializable{
     
     //Getters & Setters
     public Long getId() {
-        return id;
+        return idModul;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idModul = id;
     }
 
     public String getNombre() {
@@ -91,7 +91,7 @@ public class Modul implements Serializable{
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 89 * hash + Objects.hashCode(this.id);
+        hash = 89 * hash + Objects.hashCode(this.idModul);
         return hash;
     }
 
@@ -107,7 +107,7 @@ public class Modul implements Serializable{
             return false;
         }
         final Modul other = (Modul) obj;
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idModul, other.idModul)) {
             return false;
         }
         return true;
@@ -115,6 +115,6 @@ public class Modul implements Serializable{
 
     @Override
     public String toString() {
-        return "modelo.Modul[ id=" + id + " ]";
+        return "modelo.Modul[ id=" + idModul + " ]";
     }
 }

@@ -34,7 +34,7 @@ public class Matricula implements Serializable {
     public static final String CONSULTA_MATRICULA = "buscar_per_alumne";
 
     @Id
-    private Long id;
+    private Long idM;
     @OneToOne(mappedBy = "matriculaAlumne")
     private Alumne alumne;
     private String data;
@@ -49,7 +49,7 @@ public class Matricula implements Serializable {
     
 
     public Matricula(Long id, Alumne alumne, String data, EnumModalidad modalitat, EnumDescompte descompte, Import importMatricula) {
-        this.id = id;
+        this.idM = id;
         this.alumne = alumne;
         this.data = data;
         this.modalitat = modalitat;
@@ -61,11 +61,11 @@ public class Matricula implements Serializable {
     }
 
     public Long getId() {
-        return id;
+        return idM;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.idM = id;
     }
 
     public Alumne getAlumne() {
@@ -119,7 +119,7 @@ public class Matricula implements Serializable {
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 53 * hash + Objects.hashCode(this.id);
+        hash = 53 * hash + Objects.hashCode(this.idM);
         hash = 53 * hash + Objects.hashCode(this.alumne);
         hash = 53 * hash + Objects.hashCode(this.data);
         hash = 53 * hash + Objects.hashCode(this.unitatsFormatives);
@@ -143,7 +143,7 @@ public class Matricula implements Serializable {
         if (!Objects.equals(this.data, other.data)) {
             return false;
         }
-        if (!Objects.equals(this.id, other.id)) {
+        if (!Objects.equals(this.idM, other.idM)) {
             return false;
         }
         if (!Objects.equals(this.alumne, other.alumne)) {
@@ -163,7 +163,7 @@ public class Matricula implements Serializable {
 
     @Override
     public String toString() {
-        return "Matricula{" + "id=" + id + ", alumne=" + alumne + ", data=" + data + ", unitatsFormatives=" + unitatsFormatives + ", modalitat=" + modalitat + ", descompte=" + descompte + '}';
+        return "Matricula{" + "id=" + idM + ", alumne=" + alumne + ", data=" + data + ", unitatsFormatives=" + unitatsFormatives + ", modalitat=" + modalitat + ", descompte=" + descompte + '}';
     }
     
     
