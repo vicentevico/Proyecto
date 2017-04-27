@@ -6,18 +6,46 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.Embeddable;
 
 /**
  *
  * @author ALUMNEDAM
  */
-@Entity
+@Embeddable
 public class Import implements Serializable {
+    
+    private static final long serialVersionUID = 1L;
+    
+    private Long id;
+    private String importe;
+    
+    public Import(Long id, String importe) {
+        this.id = id;
+        this.importe = importe;
+    }
+    
+    public Import() {
+    }
+    
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getImporte() {
+        return importe;
+    }
+
+    public void setImporte(String importe) {
+        this.importe = importe;
+    }
+    
+    
+/*
     @Id
     private Long id;
     private String importe;
@@ -94,6 +122,7 @@ public class Import implements Serializable {
     public String toString() {
         return "Import{" + "id=" + id + ", importe=" + importe + ", matricula=" + matricula + '}';
     }
+*/
     
     
     

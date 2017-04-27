@@ -8,6 +8,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -41,9 +42,11 @@ public class Matricula implements Serializable {
     private List<UnitatFormativa> unitatsFormatives;
     private EnumModalidad modalitat;
     private EnumDescompte descompte;
-    @OneToOne
-    @JoinColumn(name="importMatricula")
+    
+    @Embedded
     private Import importMatricula;
+    
+    
 
     public Matricula(Long id, Alumne alumne, String data, EnumModalidad modalitat, EnumDescompte descompte, Import importMatricula) {
         this.id = id;
