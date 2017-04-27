@@ -8,6 +8,7 @@ package modelo;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ import utilidades.EnumModalidad;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= Matricula.CONSULTA_MATRICULA, query="SELECT m FROM Matricula m WHERE m.alumne=:alumne")})
+@NamedQuery(name= Matricula.CONSULTA_MATRICULA, query="SELECT m FROM Matricula m WHERE m.alumne.nif=:nif")})
 @Table(name = "AV_MATRICULES")
 public class Matricula implements Serializable {
     private static final long serialVersionUID = 1L;
@@ -35,10 +36,12 @@ public class Matricula implements Serializable {
 
     @Id
     private Long idM;
-    @OneToOne(mappedBy = "matriculaAlumne")
+    
+    @OneToOne
+    @JoinColumn(name="idAlum")
     private Alumne alumne;
     private String data;
-    @OneToMany(mappedBy="idMatricula")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="idMatricula")
     private List<UnitatFormativa> unitatsFormatives;
     private EnumModalidad modalitat;
     private EnumDescompte descompte;

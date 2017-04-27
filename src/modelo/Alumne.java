@@ -7,6 +7,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -37,8 +38,7 @@ public class Alumne implements Serializable {
     private String cognom;
     private String correu;
     private long telefon;
-    @OneToOne
-    @JoinColumn(name="matriculaAlumne")
+    @OneToOne(mappedBy = "alumne")
     private Matricula matriculaAlumne;
 
     //Constructores

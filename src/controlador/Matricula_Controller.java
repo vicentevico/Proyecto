@@ -26,7 +26,7 @@ public class Matricula_Controller implements MatriculaDAO{
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Matricula.CONSULTA_MATRICULA,Matricula.class);
-        query.setParameter("alumne", alumne);
+        query.setParameter("nif", alumne.getNif());
         Matricula a = (Matricula) query.getSingleResult();
 
         return a;

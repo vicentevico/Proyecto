@@ -63,40 +63,45 @@ public class lanzadorVVP {
         Matricula_Controller matriculaC = new Matricula_Controller();
         
 
-//        Alumne alumne = new Alumne("53765476A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
-//        ac.afegir(alumne);
-//        ac.cerrarConexion();
-//        
-//        Familia familia = new Familia(1L, "Familia prueba");
-//        fc.afegir(familia);
-//        fc.cerrarConexion();
-//
-//        Cicle cicle = new Cicle(1L, "cicle prueba", "Superior", fc.Buscar(1L));
-//        cicleC.afegir(cicle);
-//        cicleC.cerrarConexion();
-//        
-//        Curs curs = new Curs(1L, EnumCurso.PRIMERO, cicleC.buscar(1L));
-//        cursC.afegir(curs);
-//        cursC.cerrarConexion();
-//        
-//        Modul modul = new Modul(1L, "modul prueba", cicleC.buscar(1L));
-//        mc.afegir(modul);
-//        mc.cerrarConexion();
-//        
-//        UnitatFormativa uf = new UnitatFormativa(1L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"), null);
-//        ufc.afegir(uf);
-//        ufc.cerrarConexion();
+        Alumne alumne = new Alumne("53765376A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
+        ac.afegir(alumne);
+        ac.cerrarConexion();
+        
+        Familia familia = new Familia(2L, "Familia prueba");
+        fc.afegir(familia);
+        fc.cerrarConexion();
 
-        Import importe = new Import(1L, "400€");
-        Matricula matricula = new Matricula(5L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
+        Cicle cicle = new Cicle(2L, "cicle prueba", "Superior", fc.Buscar(2L));
+        cicleC.afegir(cicle);
+        cicleC.cerrarConexion();
+        
+        Curs curs = new Curs(2L, EnumCurso.PRIMERO, cicleC.buscar(2L));
+        cursC.afegir(curs);
+        cursC.cerrarConexion();
+        
+        Modul modul = new Modul(2L, "modul prueba", cicleC.buscar(2L));
+        mc.afegir(modul);
+        mc.cerrarConexion();
+        
+        UnitatFormativa uf = new UnitatFormativa(2L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"), null);
+        ufc.afegir(uf);
+        ufc.cerrarConexion();
+
+        Import importe = new Import(2L, "400€");
+        ArrayList<UnitatFormativa> listaUF = new ArrayList<UnitatFormativa>();
+        listaUF.add(ufc.buscarPerNom("unitat proba"));
+        Matricula matricula = new Matricula(3L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
         matriculaC.afegir(matricula);
         matriculaC.cerrarConexion();
-//        
+        ac.cerrarConexion();
         
 //        Alumne alModificar = ac.buscarPerNom("Cacahuete");
-//        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
-//        ac.modificar(alModificar);
+//        Matricula matInsertar = matriculaC.buscarPerAlumne(alModificar);
+////        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
+////        ac.modificar(alModificar);
+//System.out.println(matInsertar.toString());
 //        ac.cerrarConexion();
+//        matriculaC.cerrarConexion();
 //        
 //        UnitatFormativa ufModificar = ufc.buscarPerNom("unitat proba");
 //        ufModificar.setIdMatricula(matriculaC.buscarPerAlumne(alModificar));
