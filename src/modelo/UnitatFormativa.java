@@ -41,7 +41,7 @@ public class UnitatFormativa implements Serializable{
     @JoinColumn(name="idModul")
     private Modul idModul;
     @ManyToOne
-    @JoinColumn(name="UFMatricula")
+    @JoinColumn(name="idMatricula")
     private Matricula idMatricula;
     
     //Constructores
