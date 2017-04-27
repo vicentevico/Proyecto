@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -40,13 +41,17 @@ public class Matricula implements Serializable {
     private List<UnitatFormativa> unitatsFormatives;
     private EnumModalidad modalitat;
     private EnumDescompte descompte;
+    @OneToOne
+    @JoinColumn(name="importMatricula")
+    private Import importMatricula;
 
-    public Matricula(Long id, Alumne alumne, String data, EnumModalidad modalitat, EnumDescompte descompte) {
+    public Matricula(Long id, Alumne alumne, String data, EnumModalidad modalitat, EnumDescompte descompte, Import importMatricula) {
         this.id = id;
         this.alumne = alumne;
         this.data = data;
         this.modalitat = modalitat;
         this.descompte = descompte;
+        this.importMatricula = importMatricula;
     }
 
     public Matricula() {
@@ -98,6 +103,14 @@ public class Matricula implements Serializable {
 
     public void setDescompte(EnumDescompte descompte) {
         this.descompte = descompte;
+    }
+
+    public Import getImportMatricula() {
+        return importMatricula;
+    }
+
+    public void setImportMatricula(Import importMatricula) {
+        this.importMatricula = importMatricula;
     }
 
     @Override

@@ -24,9 +24,10 @@ public class Import implements Serializable {
     @OneToOne(mappedBy = "importMatricula")
     private Matricula matricula;
 
-    public Import(Long id, String importe) {
+    public Import(Long id, String importe, Matricula matricula) {
         this.id = id;
         this.importe = importe;
+        this.matricula = matricula;
     }
 
     public Import() {
