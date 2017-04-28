@@ -13,6 +13,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -41,7 +42,7 @@ public class Matricula implements Serializable {
     @JoinColumn(name="idAlum")
     private Alumne alumne;
     private String data;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="idMatricula")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy="idMatricula")
     private List<UnitatFormativa> unitatsFormatives;
     private EnumModalidad modalitat;
     private EnumDescompte descompte;

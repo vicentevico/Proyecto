@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import Excepciones.NullCicleException;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -46,10 +47,10 @@ public class Cicle implements Serializable {
     private Familia familiaCicle;
 
     //Constuctores
-    public Cicle(Long id, String nom, String grau, Familia familiaCicle) {
+    public Cicle(Long id, String nom, String grau, Familia familiaCicle) throws NullCicleException {
         this.idCicle = id;
         this.nom = nom;
-        this.grau = grau;
+        setGrau(grau);
         this.familiaCicle = familiaCicle;
     }
 
@@ -77,8 +78,12 @@ public class Cicle implements Serializable {
         return grau;
     }
 
-    public void setGrau(String grau) {
-        this.grau = grau;
+    public void setGrau(String grau) throws NullCicleException {
+        if(!grau.isEmpty()){
+            this.grau = grau;
+        }else{
+            throw new NullCicleException("Falta grado de ciclo por rellenar!");
+        }
     }
 
     public List<Modul> getModuls() {

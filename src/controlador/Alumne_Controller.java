@@ -5,6 +5,7 @@
  */
 package controlador;
 
+import Excepciones.NullAlumneException;
 import Interfaces.AlumneDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -54,7 +55,6 @@ public class Alumne_Controller implements AlumneDAO{
         //List<Client> lista = (List<Client>) em.createQuery("FROM Client").getResultList();
         Query a = em.createQuery("FROM Alumne");
         List<Alumne> lista = (List<Alumne>) a.getResultList();
-        
         return lista;
     }
 

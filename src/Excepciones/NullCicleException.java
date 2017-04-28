@@ -9,8 +9,8 @@ package Excepciones;
  *
  * @author Vicente
  */
-public class NullCursException extends Exception{
-    public NullCursException(String mensaje){
+public class NullCicleException extends Exception{
+    public NullCicleException(String mensaje){
         super(mensaje);
     }
 }

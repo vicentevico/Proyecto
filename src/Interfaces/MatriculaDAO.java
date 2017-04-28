@@ -22,4 +22,11 @@ public interface MatriculaDAO extends GenericaDAO<Matricula>{
      * @return 
      */
     Matricula buscarPerAlumne(Alumne alumne);
+    
+    /**
+     * Metodo que pasandole el id de una matricula nos devuelve la matricula
+     * @param id
+     * @return 
+     */
+    Matricula buscarPerId(Long id);
 }

@@ -6,10 +6,12 @@
 package modelo;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -40,18 +42,16 @@ public class UnitatFormativa implements Serializable{
     @ManyToOne
     @JoinColumn(name="idModul")
     private Modul idModul;
-    @ManyToOne
-    @JoinColumn(name="idMatricula")
-    private Matricula idMatricula;
+    @ManyToMany
+    private List<Matricula> idMatricula;
     
     //Constructores
-    public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul, Matricula idMatricula){
+    public UnitatFormativa(Long id, String nombreUnitatFormativa, int horas, Curs idCurs, Modul idModul){
         this.idUF = id;
         this.nomUnitatFormativa = nombreUnitatFormativa;
         this.horas = horas;
         this.idCurs = idCurs;
         this.idModul = idModul;
-        this.idMatricula = idMatricula;
     }
     
     public UnitatFormativa(){
@@ -99,11 +99,11 @@ public class UnitatFormativa implements Serializable{
         this.idCurs = idCurs;
     }
 
-    public Matricula getIdMatricula() {
+    public List<Matricula> getIdMatricula() {
         return idMatricula;
     }
 
-    public void setIdMatricula(Matricula idMatricula) {
+    public void setIdMatricula(List<Matricula> idMatricula) {
         this.idMatricula = idMatricula;
     }
     

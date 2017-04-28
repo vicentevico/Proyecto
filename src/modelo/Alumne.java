@@ -5,6 +5,7 @@
  */
 package modelo;
 
+import Excepciones.NullAlumneException;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.CascadeType;
@@ -42,8 +43,8 @@ public class Alumne implements Serializable {
     private Matricula matriculaAlumne;
 
     //Constructores
-    public Alumne(String nif, String nom, String cognom, String correu, int telefon, Matricula matriculaAlumne) {
-        this.nif = nif;
+    public Alumne(String nif, String nom, String cognom, String correu, int telefon, Matricula matriculaAlumne) throws NullAlumneException {
+        setNif(nif);
         this.nom = nom;
         this.cognom = cognom;
         this.correu = correu;
@@ -75,8 +76,12 @@ public class Alumne implements Serializable {
         return telefon;
     }
 
-    public void setNif(String nif) {
-        this.nif = nif;
+    public void setNif(String nif) throws NullAlumneException {
+        if(nif.length() == 9){
+            this.nif = nif;
+        }else{
+            throw new NullAlumneException("Nif incorrecto");
+        }
     }
 
     public void setNom(String nom) {

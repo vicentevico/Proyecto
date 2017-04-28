@@ -93,5 +93,17 @@ public class Matricula_Controller implements MatriculaDAO{
     public void cerrarConexion(){
         em.close();
     }
+
+    @Override
+    public Matricula buscarPerId(Long id) {
+        // Recupera el entity manager
+        em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        
+        Matricula f = (Matricula) em.find(Matricula.class, id);
+
+        return f;
+    }
     
 }

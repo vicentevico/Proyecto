@@ -5,6 +5,8 @@
  */
 package vista;
 
+import Excepciones.NullAlumneException;
+import Excepciones.NullCicleException;
 import controlador.Alumne_Controller;
 import controlador.Cicle_Controller;
 import controlador.Curs_Controller;
@@ -12,8 +14,15 @@ import controlador.Familia_Controller;
 import controlador.Matricula_Controller;
 import controlador.Modul_Controller;
 import controlador.UnitatFormativa_Controller;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 import modelo.Alumne;
 import modelo.Cicle;
 import modelo.Curs;
@@ -35,7 +44,7 @@ public class lanzadorVVP {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         
         //SELECT * FROM AV_UNITATS_FORMATIVES;
         //SELECT * FROM AV_ALUMNES;
@@ -46,11 +55,11 @@ public class lanzadorVVP {
         //
         //
         //DROP TABLE AV_UNITATS_FORMATIVES;
-        //DROP TABLE AV_ALUMNES;
         //DROP TABLE AV_CURSOS;
         //DROP TABLE AV_MODULS;
         //DROP TABLE AV_CICLES;
         //DROP TABLE AV_FAMILIES;
+        //DROP TABLE AV_ALUMNES;
 
         
         
@@ -62,55 +71,41 @@ public class lanzadorVVP {
         UnitatFormativa_Controller ufc = new UnitatFormativa_Controller();
         Matricula_Controller matriculaC = new Matricula_Controller();
         
+            //Comentado porque JOJE ha dicho que lo quite ya que peta
+//            LogManager.getLogManager().readConfiguration(new FileInputStream("./log.properties"));
 
-        Alumne alumne = new Alumne("53765376A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
-        ac.afegir(alumne);
-        ac.cerrarConexion();
-        
-        Familia familia = new Familia(2L, "Familia prueba");
-        fc.afegir(familia);
-        fc.cerrarConexion();
-
-        Cicle cicle = new Cicle(2L, "cicle prueba", "Superior", fc.Buscar(2L));
-        cicleC.afegir(cicle);
-        cicleC.cerrarConexion();
-        
-        Curs curs = new Curs(2L, EnumCurso.PRIMERO, cicleC.buscar(2L));
-        cursC.afegir(curs);
-        cursC.cerrarConexion();
-        
-        Modul modul = new Modul(2L, "modul prueba", cicleC.buscar(2L));
-        mc.afegir(modul);
-        mc.cerrarConexion();
-        
-        UnitatFormativa uf = new UnitatFormativa(2L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"), null);
-        ufc.afegir(uf);
-        ufc.cerrarConexion();
-
-        Import importe = new Import(2L, "400€");
-        ArrayList<UnitatFormativa> listaUF = new ArrayList<UnitatFormativa>();
-        listaUF.add(ufc.buscarPerNom("unitat proba"));
-        Matricula matricula = new Matricula(3L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
-        matriculaC.afegir(matricula);
-        matriculaC.cerrarConexion();
-        ac.cerrarConexion();
-        
-//        Alumne alModificar = ac.buscarPerNom("Cacahuete");
-//        Matricula matInsertar = matriculaC.buscarPerAlumne(alModificar);
-////        alModificar.setMatriculaAlumne(matriculaC.buscarPerAlumne(alModificar));
-////        ac.modificar(alModificar);
-//System.out.println(matInsertar.toString());
+//################ Creacion de objetos ##################
+//        Alumne alumne = new Alumne("53765376A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
+//        ac.afegir(alumne);
 //        ac.cerrarConexion();
-//        matriculaC.cerrarConexion();
 //        
-//        UnitatFormativa ufModificar = ufc.buscarPerNom("unitat proba");
-//        ufModificar.setIdMatricula(matriculaC.buscarPerAlumne(alModificar));
-//        ufc.modificar(ufModificar);
+//        Familia familia = new Familia(2L, "Familia prueba");
+//        fc.afegir(familia);
+//        fc.cerrarConexion();
+//
+//        Cicle cicle = new Cicle(2L, "cicle prueba", "Superior", fc.Buscar(2L));
+//        cicleC.afegir(cicle);
+//        cicleC.cerrarConexion();
+//        
+//        Curs curs = new Curs(2L, EnumCurso.PRIMERO, cicleC.buscar(2L));
+//        cursC.afegir(curs);
+//        cursC.cerrarConexion();
+//        
+//        Modul modul = new Modul(2L, "modul prueba", cicleC.buscar(2L));
+//        mc.afegir(modul);
+//        mc.cerrarConexion();
+//        
+//        UnitatFormativa uf = new UnitatFormativa(2L, "unitat proba", 99, cursC.buscarPerNom(EnumCurso.PRIMERO), mc.buscarPerNom("modul prueba"));
+//        ufc.afegir(uf);
 //        ufc.cerrarConexion();
-
-
-
-
+//
+//        Import importe = new Import(2L, "400€");
+//        ArrayList<UnitatFormativa> listaUF = new ArrayList<UnitatFormativa>();
+//        listaUF.add(ufc.buscarPerNom("unitat proba"));
+//        Matricula matricula = new Matricula(3L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
+//        matriculaC.afegir(matricula);
+//        matriculaC.cerrarConexion();
+//        ac.cerrarConexion();
 
 //########################### Busquedas ###############################//
 
@@ -134,12 +129,18 @@ public class lanzadorVVP {
 //        //Obtenemos el curso por id y lo mostramos por pantalla
 //        Curs cur = cursC.buscarPerNom(EnumCurso.PRIMERO);
 //        System.out.println(cur.toString());
-        
-        
-            
-            
-            
-        
+
+
+//#################### Excepciones   ########################
+        try {
+            Alumne al = new Alumne("33", "VA", "ca2", "asd@ads.com", 935602452, null);
+            Cicle ciclo = new Cicle(11L, "Prueba exception", "", null);
+        } catch (NullAlumneException naex){
+            Logger.getLogger("Alumne Exception").log(Level.SEVERE, naex.getMessage(), naex);
+        } catch (NullCicleException ncex) {
+            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.SEVERE, ncex.getMessage(), ncex);
+        }finally{
+            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.WARNING, "objetos a crear no validos");
+        }
     }
-    
 }
