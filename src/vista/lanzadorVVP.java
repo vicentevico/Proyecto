@@ -110,9 +110,9 @@ public class lanzadorVVP {
 //########################### Busquedas ###############################//
 
 //        //Obtenemos el alumno por nombre y lo mostramos por pantalla
-//        Alumne al = ac.buscarPerNom("Cacahuete");
-//        System.out.println(al.toString());
-//        ac.cerrarConexion();
+        Alumne al = ac.buscarPerNom("Cacahuete");
+        System.out.println(al.toString());
+        ac.cerrarConexion();
 //        
 //        //Obtenemos la familia por id y la mostramos por pantalla
 //        Familia fa = fc.Buscar(1L);
@@ -132,15 +132,15 @@ public class lanzadorVVP {
 
 
 //#################### Excepciones   ########################
-        try {
-            Alumne al = new Alumne("33", "VA", "ca2", "asd@ads.com", 935602452, null);
-            Cicle ciclo = new Cicle(11L, "Prueba exception", "", null);
-        } catch (NullAlumneException naex){
-            Logger.getLogger("Alumne Exception").log(Level.SEVERE, naex.getMessage(), naex);
-        } catch (NullCicleException ncex) {
-            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.SEVERE, ncex.getMessage(), ncex);
-        }finally{
-            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.WARNING, "objetos a crear no validos");
-        }
+//        try {
+//            Alumne alu = new Alumne("33", "VA", "ca2", "asd@ads.com", 935602452, null);
+//            Cicle ciclo = new Cicle(11L, "Prueba exception", "", null);
+//        } catch (NullAlumneException naex){
+//            Logger.getLogger("Alumne Exception").log(Level.SEVERE, naex.getMessage(), naex);
+//        } catch (NullCicleException ncex) {
+//            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.SEVERE, ncex.getMessage(), ncex);
+//        }finally{
+//            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.WARNING, "objetos a crear no validos");
+//        }
     }
 }

@@ -5,7 +5,6 @@
  */
 package controlador;
 
-import Excepciones.NullAlumneException;
 import Interfaces.AlumneDAO;
 import java.util.List;
 import javax.persistence.EntityManager;

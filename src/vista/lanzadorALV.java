@@ -19,23 +19,24 @@ public class lanzadorALV {
      */
     public static void main(String[] args) {
         try {
-            
+
             Alumne_Controller ac = new Alumne_Controller();
-            
-            Alumne al1 = new Alumne();
-            al1.setNif("53654704A");
-            al1.setNom("Aitor");
-            al1.setCognom("Led");
-            al1.setCorreu("asa@te.asa");
-            al1.setTelefon(433434344);
-            
-            ac.afegir(al1);
-            
-            
+
+//            Alumne al1 = new Alumne();
+//            al1.setNif("53654704A");
+//            al1.setNom("Aitor");
+//            al1.setCognom("Led");
+//            al1.setCorreu("asa@te.asa");
+//            al1.setTelefon(433434344);
+//            
+//            ac.afegir(al1);
+            Alumne al = ac.buscarPerNom("Cacahuete");
+            System.out.println(al.toString());
+            ac.cerrarConexion();
+
             // Creamos un objeto cliente y vehiculo para añadir la poliza 
 //            Client c = cc.BuscarPerNom("Vicente");
 //            Vehicle v = vc.BuscarPerMatricula("4356ASW");
-
             // Crea un usuari
 //            Usuari usu1 = new Usuari();
 //            usu1.setNom("chachi");
@@ -52,8 +53,6 @@ public class lanzadorALV {
 //            adreca1.setPoblicacio("BCN");
 //            
 //            client1.setAdreca(adreca1);
-            
-            
             //Crea un nou vehicle
 //            Vehicle vehicle1 = new Vehicle();
 ////            vehicle1.setPropietari(c);
@@ -61,7 +60,6 @@ public class lanzadorALV {
 //            vehicle1.setMarca("Seat");
 //            vehicle1.setMatricula("4356ASW");
 //            vehicle1.setAnyFabricacio(2012);
-            
             //Crea una nova polissa
 //            Polissa polissa1 = new Polissa();
 //            polissa1.setNumeroPolissa("1");
@@ -73,27 +71,20 @@ public class lanzadorALV {
 //            polissa1.setDataInici(dataInici);
 //            Calendar dataFi = new GregorianCalendar(2018,12,31);
 //            polissa1.setDataFi(dataFi);
-
             //Crea una nova asseguradora
 //            Asseguradora asseg1 = new Asseguradora();
 //            asseg1.setNomAsseguradora("Asseguradoras Castillo");
 //            asseg1.setNifAsseguradora("1234567890");
-            
-              
-            
             // ______________Insertamos y consulltamos las tablas________________________
-            
             //CLIENTES
 //            cc.Insertar(client1);
 //            cc.Consulta();
 //            cc.Eliminar(cc.BuscarPerNom("Vicente"));
-
             //VEHICULOS
 //            vc.Insertar(vehicle1);
 //            vc.Consulta();
 //            System.out.println(vc.BuscarPerMatricula("4356ASW"));
 //            vc.Eliminar(vc.BuscarPerMatricula("4356ASW"));
-            
             //POLIZAS
 //            pc.Insertar(polissa1);
 //            pc.Consulta();
@@ -101,23 +92,20 @@ public class lanzadorALV {
 //            modPol.setNumeroPolissa("87");
 //            pc.Modificar(modPol);
 //            pc.Eliminar(pc.BuscarPerClient("Vicente"));
-
             //USUARIOS
 //            uc.Insertar(usu1);
 //            uc.Consulta();
 //            System.out.println(uc.validarUsuari("chachi", "pirulino"));
 //            uc.Eliminar(uc.bucarUsuariPerNom("chachi"));
-
             //ASEGURADORAS
 //            ac.Insertar(asseg1);
 //            ac.Consulta();
 //            ac.Eliminar(ac.BuscarPorNombre("Asseguradoras Castillo"));
-
             System.out.println("FI");
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
         }
     }
-    
+
 }
