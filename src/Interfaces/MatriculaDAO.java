@@ -5,8 +5,12 @@
  */
 package Interfaces;
 
+import java.util.List;
 import modelo.Alumne;
+import modelo.Curs;
 import modelo.Matricula;
+import modelo.UnitatFormativa;
+import utilidades.EnumCurso;
 
 
 /**
@@ -18,15 +22,15 @@ public interface MatriculaDAO extends GenericaDAO<Matricula>{
     /**
      * Retorna un objecte Matricula si el seu el nom de l'Alumne que la té, 
      * es igual al String passat per parametre 
-     * @param nomAlumne
+     * @param alumne
      * @return 
      */
     Matricula buscarPerAlumne(Alumne alumne);
     
     /**
      * Metodo que pasandole el id de una matricula nos devuelve la matricula
-     * @param id
+     * @param uf
      * @return 
      */
-    Matricula buscarPerId(Long id);
+    List buscarAlumnesPerUF(UnitatFormativa uf);
 }

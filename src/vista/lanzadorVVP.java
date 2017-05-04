@@ -46,20 +46,20 @@ public class lanzadorVVP {
      */
     public static void main(String[] args) throws FileNotFoundException, IOException {
         
-        //SELECT * FROM AV_UNITATS_FORMATIVES;
-        //SELECT * FROM AV_ALUMNES;
-        //SELECT * FROM AV_CURSOS;
-        //SELECT * FROM AV_MODULS;
-        //SELECT * FROM AV_CICLES;
-        //SELECT * FROM AV_FAMILIES;
-        //
-        //
-        //DROP TABLE AV_UNITATS_FORMATIVES;
-        //DROP TABLE AV_CURSOS;
-        //DROP TABLE AV_MODULS;
-        //DROP TABLE AV_CICLES;
-        //DROP TABLE AV_FAMILIES;
-        //DROP TABLE AV_ALUMNES;
+//        SELECT * FROM AV_UNITATS_FORMATIVES;
+//        SELECT * FROM AV_ALUMNES;
+//        SELECT * FROM AV_CURSOS;
+//        SELECT * FROM AV_MODULS;
+//        SELECT * FROM AV_CICLES;
+//        SELECT * FROM AV_FAMILIES;
+//        
+//        
+//        DROP TABLE AV_UNITATS_FORMATIVES;
+//        DROP TABLE AV_CURSOS;
+//        DROP TABLE AV_MODULS;
+//        DROP TABLE AV_CICLES;
+//        DROP TABLE AV_FAMILIES;
+//        DROP TABLE AV_ALUMNES;
 
         
         
@@ -87,7 +87,7 @@ public class lanzadorVVP {
 //        cicleC.afegir(cicle);
 //        cicleC.cerrarConexion();
 //        
-//        Curs curs = new Curs(2L, EnumCurso.PRIMERO, cicleC.buscar(2L));
+//        Curs curs = new Curs(3L, EnumCurso.SEGUNDO, cicleC.buscar(2L));
 //        cursC.afegir(curs);
 //        cursC.cerrarConexion();
 //        
@@ -110,9 +110,9 @@ public class lanzadorVVP {
 //########################### Busquedas ###############################//
 
 //        //Obtenemos el alumno por nombre y lo mostramos por pantalla
-        Alumne al = ac.buscarPerNom("Cacahuete");
-        System.out.println(al.toString());
-        ac.cerrarConexion();
+//        Alumne al = ac.buscarPerNom("Cacahuete");
+//        System.out.println(al.toString());
+//        ac.cerrarConexion();
 //        
 //        //Obtenemos la familia por id y la mostramos por pantalla
 //        Familia fa = fc.Buscar(1L);
@@ -130,6 +130,9 @@ public class lanzadorVVP {
 //        Curs cur = cursC.buscarPerNom(EnumCurso.PRIMERO);
 //        System.out.println(cur.toString());
 
+        //
+        matriculaC.imprimirLista(matriculaC.buscarAlumnesPerUF(ufc.buscarPerNom("unitat proba")));
+        matriculaC.cerrarConexion();
 
 //#################### Excepciones   ########################
 //        try {

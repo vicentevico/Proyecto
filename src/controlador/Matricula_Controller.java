@@ -6,11 +6,15 @@
 package controlador;
 
 import Interfaces.MatriculaDAO;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import modelo.Alumne;
+import modelo.Curs;
 import modelo.Matricula;
+import modelo.UnitatFormativa;
+import utilidades.EnumCurso;
 
 /**
  *
@@ -19,19 +23,6 @@ import modelo.Matricula;
 public class Matricula_Controller implements MatriculaDAO{
     EntityManager em;
     
-    @Override
-    public Matricula buscarPerAlumne(Alumne alumne) {
-        // Recupera el entity manager
-        em = new EM_Controller().getEntityManager();
-
-        System.out.println("busqueda");
-        Query query = em.createNamedQuery(Matricula.CONSULTA_MATRICULA,Matricula.class);
-        query.setParameter("nif", alumne.getNif());
-        Matricula a = (Matricula) query.getSingleResult();
-
-        return a;
-    }
-
     @Override
     public void afegir(Matricula t) {
         // Recupera el entity manager
@@ -95,15 +86,36 @@ public class Matricula_Controller implements MatriculaDAO{
     }
 
     @Override
-    public Matricula buscarPerId(Long id) {
+    public Matricula buscarPerAlumne(Alumne alumne) {
         // Recupera el entity manager
         em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
-        
-        Matricula f = (Matricula) em.find(Matricula.class, id);
+        Query query = em.createNamedQuery(Matricula.CONSULTA_MATRICULA,Matricula.class);
+        query.setParameter("nif", alumne.getNif());
+        Matricula a = (Matricula) query.getSingleResult();
 
-        return f;
+        return a;
+    }
+
+    @Override
+    public List buscarAlumnesPerUF(UnitatFormativa uf) {
+        // Recupera el entity manager
+        em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(Matricula.CONSULTA_ALUMNES_UF,Matricula.class);
+        query.setParameter("uf", uf.getId());
+        List<Matricula> lista = (List<Matricula>) query.getResultList();
+
+        return lista;
+    }
+    
+    public void imprimirLista(List<Matricula> lista) {
+        System.out.println("Total de resultats= " + lista.size());
+        for (int i = 0; i < lista.size(); i++) {
+            System.out.println(i+1 + ". " + lista.get(i).getAlumne().getNom());
+        }
     }
     
 }

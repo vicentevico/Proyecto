@@ -1,0 +1,143 @@
+<project name="ProyectoM06" default="test_txt" basedir=".">
+
+    <!-- Directorio del código fuente -->
+    <property name="src.dir" location="./src" />
+
+    <!-- Directorio de clases compiladas -->
+    <property name="build.dir" location="mi_build" />
+
+    <!-- Subdirectorio de las clases compiladas del proyecto -->
+    <property name="build.classes.dir" location="\${build.dir}/classes" />
+
+    <!-- Directorio de las clases de prueba -->
+    <property name="test.dir" location="./test" />
+
+    <!-- Directorio de las bibliotecas del proyecto -->
+    <property name="libHib" location="C:\Users\ALUMNEDAM\Documents\NetBeansProjects\hibernate-release-5.2.7.Final\lib\required" />
+    <property name="lib" location="C:\Program Files\NetBeans 8.1\platform\modules\ext" />
+    <property name="jdbc" location="C:\Users\ALUMNEDAM\Documents\NetBeansProjects"/>
+    <property name="libOptional" location="C:\Users\ALUMNEDAM\Documents\NetBeansProjects\hibernate-search-5.6.0.Final\dist\lib\optional\jpa"/>
+    
+    <!-- Directorio de informes -->
+    <property name="documentacio.dir" location="./documentacio" />
+
+    <!-- Directorio de la documentación -->
+    <property name="documentacio.javadoc" location="${documentacio.dir}/javadoc" />
+
+    <!-- Directorio para config -->
+    <property name="config.dir" location="./config" />
+
+    <!-- Directorio para lib -->
+    <property name="lib.dir" location="./lib" />
+
+    <!-- Directorio para el fichero empaquetado -->
+    <property name="dist.dir" location="dist" />
+
+    <!-- Directorio del fichero empaquetado -->
+    <property name="dist.name" value="ProyectoM06.jar" />
+
+    <path id="test.compile.classpath">
+        <fileset dir="${lib}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${libHib}">
+            <include name="*.jar" />
+        </fileset>
+        <fileset dir="${libOptional}">
+            <include name="hibernate-entitymanager-5.1.3.Final.jar" />
+        </fileset>
+        <fileset dir="${jdbc}">
+            <include name="*.jar" />
+        </fileset>
+        <pathelement location="\${build.classes.dir}" />
+    </path>
+
+    <path id="test.classpath">
+        <path refid="test.compile.classpath" />
+        <pathelement path="${test.classes.dir}" />
+    </path>
+
+    <target name="compila" description="Compila el proyecto">
+        <mkdir dir="${build.classes.dir}" />
+        <javac destdir="${build.classes.dir}" includeantruntime="false">
+            <src path="${src.dir}"/>
+            <classpath refid="test.classpath"/>
+        </javac>
+    </target>
+
+    <target name="test_txt" depends="compila" description="Ejecuta los tests unitarios">
+        <junit printsummary="true" haltonfailure="false" failureproperty="test.failures">
+            <classpath refid="test.classpath" />
+            <formatter type="plain" />
+            <test name="pruebasProyectoFinal.AllTests" todir="${test.dir}" />
+        </junit>
+    </target>
+
+    <target name="documentacion" depends="test_txt" description="Genera la documentación del proyecto.">
+        <javadoc sourcepath="${src.dir}" destdir="${documentacio.javadoc}" author="true" version="true" use="true" access="private" linksource="true" encoding="ISO-8859-1" windowtitle="${ant.project.name}">
+            <classpath>
+                <pathelement path="${build.classes.dir}" />
+            </classpath>
+        </javadoc>
+    </target>
+
+    <target name="empaqueta" depends="documentacion" description="Genera el fichero jar">
+        <mkdir dir="${dist.dir}" />
+        <jar destfile="${dist.dir}/\${dist.name}">
+            <fileset dir="${build.classes.dir}" />
+            <manifest>
+                <attribute name="Main-Class" value="vista.lanzadorVVP" />
+            </manifest>
+        </jar>
+    </target>
+
+    <target name="ejecuta" depends="empaqueta" description="Ejecuta la aplicación.">
+        <java jar="${dist.dir}/${dist.name}" fork="true" />
+    </target>
+    
+    
+    
+    <target name="copiarHibernateYConfig" depends="empaqueta" description="Copia las librerias y el archivo de información">
+        <mkdir dir="lib" />
+        <mkdir dir="documentacio" />
+        <copy todir="${lib.dir}">
+            <fileset dir="${libHib}">
+                <include name="*.jar" />
+            </fileset>
+            <fileset dir="${jdbc}">
+                <include name="*.jar" />
+            </fileset>
+        </copy>
+        <copy todir="${documentacio.dir}">
+            <fileset dir=".">
+                <include name="Document_ANT.docx" />
+            </fileset>
+        </copy>
+    </target>
+    
+    <target name="comprimir" depends="copiarHibernateYConfig" description="Comprime en un ZIP los archivos indicados">
+        <zip destfile="ArchivoZIP.zip">
+            <fileset dir="${src.dir}">
+                <include name="**/*" />
+            </fileset>
+            <fileset dir="${lib.dir}">
+                <include name="**/*" />
+            </fileset>
+            <fileset dir="${documentacio.dir}">
+                <include name="**/*" />
+            </fileset>
+            <fileset dir="${dist.dir}">
+                <include name="**/*" />
+            </fileset>
+        </zip>
+    </target>
+
+    <target name="limpia" description="Limpieza del proyecto">
+        <delete dir="\${dist.dir}" />
+        <delete dir="\${build.dir}" />
+        <delete dir="\${documentacio.dir}" />
+    </target>
+    
+    <!-- PARA EJECUTALO TODO A LA VEZ, DEBES EJECUTAR PRIMERO LA TAREA DE COMPRIMIR -->
+
+</project>

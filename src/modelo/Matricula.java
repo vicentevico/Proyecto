@@ -27,12 +27,14 @@ import utilidades.EnumModalidad;
  */
 @Entity
 @NamedQueries({
-@NamedQuery(name= Matricula.CONSULTA_MATRICULA, query="SELECT m FROM Matricula m WHERE m.alumne.nif=:nif")})
+@NamedQuery(name= Matricula.CONSULTA_MATRICULA, query="SELECT m FROM Matricula m WHERE m.alumne.nif=:nif"),
+@NamedQuery(name= Matricula.CONSULTA_ALUMNES_UF, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idUF=:uf")})
 @Table(name = "AV_MATRICULES")
 public class Matricula implements Serializable {
     private static final long serialVersionUID = 1L;
     
     public static final String CONSULTA_MATRICULA = "buscar_per_alumne";
+    public static final String CONSULTA_ALUMNES_UF = "buscar_per_UF";
 
     @Id
     private Long idM;
@@ -41,10 +43,13 @@ public class Matricula implements Serializable {
     @JoinColumn(name="idAlum")
     private Alumne alumne;
     private String data;
+    
     @ManyToMany(cascade = CascadeType.ALL, mappedBy="idMatricula")
     private List<UnitatFormativa> unitatsFormatives;
+    
     private EnumModalidad modalitat;
     private EnumDescompte descompte;
+    
     
     @Embedded
     private Import importMatricula;

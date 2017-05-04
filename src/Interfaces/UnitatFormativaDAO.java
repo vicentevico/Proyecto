@@ -21,4 +21,5 @@ public interface UnitatFormativaDAO extends GenericaDAO<UnitatFormativa>{
      */
     UnitatFormativa buscarPerNom(String nomUnitatFormativa);
     
+    
 }
