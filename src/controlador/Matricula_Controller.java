@@ -11,7 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import modelo.Alumne;
+import modelo.Cicle;
 import modelo.Curs;
+import modelo.Familia;
 import modelo.Matricula;
 import modelo.UnitatFormativa;
 import utilidades.EnumCurso;
@@ -86,13 +88,13 @@ public class Matricula_Controller implements MatriculaDAO{
     }
 
     @Override
-    public Matricula buscarPerAlumne(Alumne alumne) {
+    public Matricula buscarPerAlumne(String nif) {
         // Recupera el entity manager
         em = new EM_Controller().getEntityManager();
 
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Matricula.CONSULTA_MATRICULA,Matricula.class);
-        query.setParameter("nif", alumne.getNif());
+        query.setParameter("nif", nif);
         Matricula a = (Matricula) query.getSingleResult();
 
         return a;
@@ -106,6 +108,45 @@ public class Matricula_Controller implements MatriculaDAO{
         System.out.println("busqueda");
         Query query = em.createNamedQuery(Matricula.CONSULTA_ALUMNES_UF,Matricula.class);
         query.setParameter("uf", uf.getId());
+        List<Matricula> lista = (List<Matricula>) query.getResultList();
+
+        return lista;
+    }
+
+    @Override
+    public List buscarAlumnePerCurs(Curs curs) {
+        // Recupera el entity manager
+        em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(Matricula.CONSULTA_ALUMNES_CURS,Matricula.class);
+        query.setParameter("uf", curs.getId());
+        List<Matricula> lista = (List<Matricula>) query.getResultList();
+
+        return lista;
+    }
+
+    @Override
+    public List buscarAlumnePerCicle(Cicle cicle) {
+        // Recupera el entity manager
+        em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(Matricula.CONSULTA_ALUMNES_CICLE,Matricula.class);
+        query.setParameter("uf", cicle.getId());
+        List<Matricula> lista = (List<Matricula>) query.getResultList();
+
+        return lista;
+    }
+
+    @Override
+    public List buscarAlumnePerFamilia(Familia familia) {
+        // Recupera el entity manager
+        em = new EM_Controller().getEntityManager();
+
+        System.out.println("busqueda");
+        Query query = em.createNamedQuery(Matricula.CONSULTA_ALUMNES_FAMILIA,Matricula.class);
+        query.setParameter("uf", familia.getId());
         List<Matricula> lista = (List<Matricula>) query.getResultList();
 
         return lista;

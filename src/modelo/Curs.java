@@ -12,6 +12,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -42,6 +43,7 @@ public class Curs implements Serializable{
     @ManyToOne
     @JoinColumn(name="cicleCurs")
     private Cicle cicleCurs;
+
 
     
     //Constructores
@@ -87,6 +89,14 @@ public class Curs implements Serializable{
 
     public void setCicleCurs(Cicle cicleCurs) {
         this.cicleCurs = cicleCurs;
+    }
+
+    public Long getIdCurs() {
+        return idCurs;
+    }
+
+    public void setIdCurs(Long idCurs) {
+        this.idCurs = idCurs;
     }
     
     

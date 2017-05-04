@@ -75,17 +75,29 @@ public class lanzadorVVP {
 //            LogManager.getLogManager().readConfiguration(new FileInputStream("./log.properties"));
 
 //################ Creacion de objetos ##################
-//        Alumne alumne = new Alumne("53765376A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
-//        ac.afegir(alumne);
+//        Alumne alumne;
+//        try {
+//            alumne = new Alumne("53765376A", "Cacahuete", "Salado", "CacahueteSalado@concascara.com", 658745214, null);
+//            ac.afegir(alumne);
 //        ac.cerrarConexion();
+//        } catch (NullAlumneException ex) {
+//            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
 //        
 //        Familia familia = new Familia(2L, "Familia prueba");
 //        fc.afegir(familia);
 //        fc.cerrarConexion();
 //
-//        Cicle cicle = new Cicle(2L, "cicle prueba", "Superior", fc.Buscar(2L));
-//        cicleC.afegir(cicle);
+//        Cicle cicle;
+//        try {
+//            cicle = new Cicle(2L, "cicle prueba", "Superior", fc.Buscar(2L));
+//            cicleC.afegir(cicle);
 //        cicleC.cerrarConexion();
+//        } catch (NullCicleException ex) {
+//            Logger.getLogger(lanzadorVVP.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        
 //        
 //        Curs curs = new Curs(3L, EnumCurso.SEGUNDO, cicleC.buscar(2L));
 //        cursC.afegir(curs);
@@ -102,6 +114,7 @@ public class lanzadorVVP {
 //        Import importe = new Import(2L, "400€");
 //        ArrayList<UnitatFormativa> listaUF = new ArrayList<UnitatFormativa>();
 //        listaUF.add(ufc.buscarPerNom("unitat proba"));
+//        
 //        Matricula matricula = new Matricula(3L, ac.buscarPerNom("Cacahuete"), "25/04/2017", EnumModalidad.UF_SUELTAS, EnumDescompte.TODO, importe);
 //        matriculaC.afegir(matricula);
 //        matriculaC.cerrarConexion();
@@ -129,10 +142,28 @@ public class lanzadorVVP {
 //        //Obtenemos el curso por id y lo mostramos por pantalla
 //        Curs cur = cursC.buscarPerNom(EnumCurso.PRIMERO);
 //        System.out.println(cur.toString());
+//
+//        //Imprimimos todas las matriculas en las que este apuntado el alumno pasado por parametro
+//        matriculaC.imprimirLista(matriculaC.buscarPerAlumne(alumne));
+//        matriculaC.cerrarConexion();
 
-        //
-        matriculaC.imprimirLista(matriculaC.buscarAlumnesPerUF(ufc.buscarPerNom("unitat proba")));
-        matriculaC.cerrarConexion();
+//        //Imprimimos todos los alumnos que tienen la UF pasada por parametro
+//        matriculaC.imprimirLista(matriculaC.buscarAlumnesPerUF(ufc.buscarPerNom("unitat proba")));
+//        matriculaC.cerrarConexion();
+//
+//        //Imprimimos todos los alumnos que tienen el curso pasado por parametro
+//        matriculaC.imprimirLista(matriculaC.buscarAlumnePerCurs(cursC.buscarPerNom(EnumCurso.PRIMERO)));
+//        matriculaC.cerrarConexion();
+//        
+//        //Imprimimos todos los alumnos que tienen el ciclo pasado por parametro
+//        matriculaC.imprimirLista(matriculaC.buscarAlumnePerCicle(cicleC.buscar(2L)));
+//        matriculaC.cerrarConexion();
+//        
+//        //Imprimimos todos los alumnos que tienen la familia pasada por parametro
+//        matriculaC.imprimirLista(matriculaC.buscarAlumnePerFamilia(fc.Buscar(2L)));
+//        matriculaC.cerrarConexion();
+        
+        
 
 //#################### Excepciones   ########################
 //        try {

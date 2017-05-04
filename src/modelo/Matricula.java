@@ -25,16 +25,28 @@ import utilidades.EnumModalidad;
  *
  * @author ALUMNEDAM
  */
+
+
+//,
+//
+
+
 @Entity
 @NamedQueries({
 @NamedQuery(name= Matricula.CONSULTA_MATRICULA, query="SELECT m FROM Matricula m WHERE m.alumne.nif=:nif"),
-@NamedQuery(name= Matricula.CONSULTA_ALUMNES_UF, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idUF=:uf")})
+@NamedQuery(name= Matricula.CONSULTA_ALUMNES_UF, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idUF=:uf"),
+@NamedQuery(name= Matricula.CONSULTA_ALUMNES_CURS, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idCurs.idCurs=:curs"),
+@NamedQuery(name= Matricula.CONSULTA_ALUMNES_CICLE, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idCurs.cicleCurs.idCicle IN (:cicle)"),
+@NamedQuery(name= Matricula.CONSULTA_ALUMNES_FAMILIA, query="SELECT m FROM Matricula m WHERE m.unitatsFormatives.idCurs.cicleCurs.familiaCicle.idF IN (:familia)")})
 @Table(name = "AV_MATRICULES")
 public class Matricula implements Serializable {
     private static final long serialVersionUID = 1L;
     
     public static final String CONSULTA_MATRICULA = "buscar_per_alumne";
     public static final String CONSULTA_ALUMNES_UF = "buscar_per_UF";
+    public static final String CONSULTA_ALUMNES_CURS = "buscar_per_Curs";
+    public static final String CONSULTA_ALUMNES_CICLE = "buscar_per_Cicle";
+    public static final String CONSULTA_ALUMNES_FAMILIA = "buscar_per_Familia";
 
     @Id
     private Long idM;
@@ -48,8 +60,7 @@ public class Matricula implements Serializable {
     private List<UnitatFormativa> unitatsFormatives;
     
     private EnumModalidad modalitat;
-    private EnumDescompte descompte;
-    
+    private EnumDescompte descompte;    
     
     @Embedded
     private Import importMatricula;
@@ -122,7 +133,8 @@ public class Matricula implements Serializable {
 
     public void setImportMatricula(Import importMatricula) {
         this.importMatricula = importMatricula;
-    }
+    }    
+    
 
     @Override
     public int hashCode() {
