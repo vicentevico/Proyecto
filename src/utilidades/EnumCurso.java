@@ -6,7 +6,7 @@
 package utilidades;
 
 /**
- *
+ * Enum para saber los nombres de los diferentes cursos disponibles
  * @author Vicente
  */
 public enum EnumCurso {

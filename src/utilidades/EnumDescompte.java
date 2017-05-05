@@ -6,7 +6,7 @@
 package utilidades;
 
 /**
- *
+ * Los diferentes descuentos que se hacen al crear una matricula
  * @author ALUMNEDAM
  */
 public enum EnumDescompte {

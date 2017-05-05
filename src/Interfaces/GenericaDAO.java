@@ -11,10 +11,22 @@ package Interfaces;
  */
 public interface GenericaDAO<T> {
     
+    /**
+     * Añade un objeto T a la base de datos
+     * @param t 
+     */
     void afegir(T t);
     
+    /**
+     * Elimina el objeto T de la base de datos
+     * @param t 
+     */
     void eliminar(T t);
     
+    /**
+     * Modifica un objeto T en la base de datos
+     * @param t 
+     */
     void modificar(T t);
     
 }

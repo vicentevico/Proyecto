@@ -6,7 +6,7 @@
 package utilidades;
 
 /**
- *
+ * Enumeración que permite escoger el tipo de matricula
  * @author ALUMNEDAM
  */
 public enum EnumModalidad {
